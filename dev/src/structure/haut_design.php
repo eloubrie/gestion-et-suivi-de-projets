@@ -14,11 +14,11 @@
 
 				<div id="menu">
 					<a href="index.php">Page d'accueil</a>
-					<a href="us.php">Liste des US</a>
+					<a href="backlog.php">Backlog</a>
 					<a href="taches.php">Liste des tâches</a>
 					<a href="gantt.php">Gantt</a>
 					<a href="bilan.php">Bilan</a>
-					<a href="depot.php">Dépot git</a>
+					<a href="depot.php">Dépôt git</a>
 					<a href="inscription.php">Inscription</a>
 					<a href="connexion.php">Connexion</a>
 				</div>

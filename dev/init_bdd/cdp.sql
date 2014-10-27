@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 25 Octobre 2014 à 12:37
+-- Généré le: Lun 27 Octobre 2014 à 16:02
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -56,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `git` (
 
 CREATE TABLE IF NOT EXISTS `taches` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` text NOT NULL,
   `description` text NOT NULL,
   `us` int(11) NOT NULL,
   `type` int(11) NOT NULL,
@@ -66,7 +67,14 @@ CREATE TABLE IF NOT EXISTS `taches` (
   `date_realisation` date NOT NULL,
   `date_test` date NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `taches`
+--
+
+INSERT INTO `taches` (`ID`, `titre`, `description`, `us`, `type`, `cout`, `dependances`, `developpeur`, `statut`, `date_realisation`, `date_test`) VALUES
+(1, 'Tache 1', 'Description T1', 1, 2, 3, '4', 5, 1, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -98,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `us` (
 
 INSERT INTO `us` (`ID`, `titre`, `description`, `projet`, `sprint`, `cout`, `dependances`, `statut`, `date_debut`, `date_fin`, `date_test`, `ID_test`, `description_test`, `ID_git`) VALUES
 (1, 'titre 1', 'Us numéro 1', 0, 1, 2, '0', 0, '2014-10-22', '2014-10-25', '0000-00-00', 5, 'Description du test 1', 0),
-(2, 'titre 2', 'US numéro 2', 0, 2, 5, '1', 0, '2014-10-30', '2014-10-31', '0000-00-00', 2, 'Description test numéro 2', 0);
+(2, 'titre 2', 'US numéro 2', 0, 2, 5, '1', 2, '2014-10-30', '2014-10-31', '0000-00-00', 2, 'Description test numéro 2', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

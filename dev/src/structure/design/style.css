@@ -107,7 +107,7 @@ img
 	width : 1000px;
 	height : 36px;
 	text-align : left;
-	padding-top : 5px;
+	padding-top : 7px;
 	margin : auto;
 }
 
@@ -118,4 +118,26 @@ img
 	font-size : 13px;
 	font-weight : bold;
 	color : white;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////            MH           ///////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////////////////////////// */
+
+.afaire
+{
+	font-weight : bold;
+	color : red;
+}
+
+.encours
+{
+	font-weight : bold;
+	color : orange;
+}
+
+.termine
+{
+	font-weight : bold;
+	color : green;
 }
