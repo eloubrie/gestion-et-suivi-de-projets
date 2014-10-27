@@ -1,7 +1,19 @@
 <?php include("structure/haut_design.php"); ?>
 
-<h2>Texte de page d'accueil</h2>
-<p>Remplir ici avec le texte de la page d'accueil !</p>
+<h3>Gérer son projet avec des outils adaptés</h3><br />
+
+<p>Ce site a pour but de fournir des outils permettant de gérer votre projet et le mener à terme. Il vous permettra entre autre de :</p>
+
+<p>
+- Créer/Gérer une liste d'users story.<br />
+- Associer des tâches à des users story.<br />
+- Visualiser les tâches à faire, en cours ou terminées.<br />
+- Générer un Gantt correspondant à un sprint.<br />
+- Accéder aux sources du projet pour une user story donnée.<br />
+- Générer un bilan d'un sprint terminé.<br />
+</p>
+
+<p>Ces différents outils vous permettront de structurer beaucoup plus facilement le déroulement de votre projet.</p>
 
 <?php include("structure/bas_design.php"); ?>					
 						
