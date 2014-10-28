@@ -1,16 +1,18 @@
 <?php
+include("modeles/modele_us.php");
+
 class Controleur
 {
-	private $modele;
+	private $modeleUS;
 
 	public function __construct()
 	{
-		$this->modele = new Modele();
+		$this->modeleUS = new ModeleUS();
 	}
 	
 	public function build_table()
 	{
-		foreach($this->modele->get_backlog() as $ligne_backlog)
+		foreach($this->modeleUS->get_backlog() as $ligne_backlog)
 		{
 			$this->build_line($ligne_backlog);
 		}

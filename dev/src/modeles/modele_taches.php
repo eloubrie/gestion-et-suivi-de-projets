@@ -1,7 +1,7 @@
 <?php
 include('bdd/bdd.php'); 
 
-class Modele
+class ModeleTaches
 {
 	/*
 	Implémenter ici les méthodes effectuant des requêtes SQL.

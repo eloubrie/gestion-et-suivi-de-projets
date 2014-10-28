@@ -1,7 +1,6 @@
 <?php
 include("structure/haut_design.php"); 
 
-include("modeles/modele_gantt.php");
 include("controleurs/controleur_gantt.php");
 ?>
 

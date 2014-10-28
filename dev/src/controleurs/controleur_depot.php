@@ -1,4 +1,6 @@
 <?php
+include("modeles/modele_vide.php");
+
 class Controleur
 {
 	private $modele;

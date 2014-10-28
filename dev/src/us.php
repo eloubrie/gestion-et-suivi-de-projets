@@ -1,7 +1,6 @@
 <?php
 include("structure/haut_design.php"); 
 
-include("modeles/modele_us.php");
 include("controleurs/controleur_us.php");
 
 $us = $controleur->getDonneesUS($_GET['ID'])

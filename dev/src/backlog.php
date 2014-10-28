@@ -1,7 +1,6 @@
 <?php
 include("structure/haut_design.php"); 
 
-include("modeles/modele_backlog.php");
 include("controleurs/controleur_backlog.php");
 ?>
 

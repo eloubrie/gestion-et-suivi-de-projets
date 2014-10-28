@@ -1,7 +1,7 @@
 <?php
 include('bdd/bdd.php'); 
 
-class Modele
+class ModeleGit
 {
 	/*
 	Implémenter ici les méthodes effectuant des requêtes SQL.

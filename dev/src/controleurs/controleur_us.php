@@ -1,16 +1,18 @@
 <?php
+include("modeles/modele_us.php");
+
 class Controleur
 {
-	private $modele;
+	private $modeleUS;
 
 	public function __construct()
 	{
-		$this->modele = new Modele();
+		$this->modeleUS = new ModeleUS();
 	}
 	
 	public function getDonneesUS($id)
 	{
-		$donnees = $this->modele->get_US($id)->fetch(PDO::FETCH_ASSOC);
+		$donnees = $this->modeleUS->get_US($id)->fetch(PDO::FETCH_ASSOC);
 		
 		if($donnees['statut'] == 0)
 		{ $donnees['statut'] = '<span class="afaire">A faire</span>'; }
@@ -24,7 +26,7 @@ class Controleur
 	
 	public function build_liste_taches_us($id)
 	{
-		foreach($this->modele->get_taches_US($id) as $tache)
+		foreach($this->modeleUS->get_taches_US($id) as $tache)
 		{
 			$this->build_line($tache);
 		}
