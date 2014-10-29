@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+Ôªø<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 
 	<head>
@@ -15,10 +15,10 @@
 				<div id="menu">
 					<a href="index.php">Page d'accueil</a>
 					<a href="backlog.php">Backlog</a>
-					<a href="taches.php">Liste des t‚ches</a>
+					<a href="taches.php">Liste des t√¢ches</a>
 					<a href="gantt.php">Gantt</a>
 					<a href="bilan.php">Bilan</a>
-					<a href="depot.php">DÈpÙt git</a>
+					<a href="depot.php">D√©p√¥t git</a>
 					<a href="inscription.php">Inscription</a>
 					<a href="connexion.php">Connexion</a>
 				</div>

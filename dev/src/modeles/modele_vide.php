@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include('bdd/bdd.php'); 
 
 class Modele

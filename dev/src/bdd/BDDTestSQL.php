@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 //Interface to set up the different commands on SQL
 interface BDDTestSQL {

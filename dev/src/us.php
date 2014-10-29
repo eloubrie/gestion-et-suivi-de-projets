@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 include("structure/haut_design.php"); 
 
 include("controleurs/controleur_us.php");
@@ -6,21 +6,21 @@ include("controleurs/controleur_us.php");
 $us = $controleur->getDonneesUS($_GET['ID'])
 ?>
 
-<h3><?php echo $us['titre']; ?> (US numéro <?php echo $us['ID']; ?>)</h3><br />
+<h3><?php echo $us['titre']; ?> (US numÃ©ro <?php echo $us['ID']; ?>)</h3><br />
 <p><b>Description :</b> <?php echo $us['description']; ?></p>
 <p><b>Sprint :</b> <?php echo $us['sprint']; ?></p>
-<p><b>Coût :</b> <?php echo $us['cout']; ?></p>
-<p><b>Dépendances :</b> <?php echo $us['dependances']; ?></p>
+<p><b>CoÃ»t :</b> <?php echo $us['cout']; ?></p>
+<p><b>DÃ©pendances :</b> <?php echo $us['dependances']; ?></p>
 <p><b>Statut :</b> <?php echo $us['statut']; ?></p>
-<p><b>Date début :</b> <?php echo $us['date_debut']; ?></p>
+<p><b>Date dÃ©but :</b> <?php echo $us['date_debut']; ?></p>
 <p><b>Date fin :</b> <?php echo $us['date_fin']; ?></p>
 <p><b>Description du test :</b> <?php echo $us['description_test']; ?></p>
 <p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
 <br />
 
-<a href="lancer_test?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-refresh"></span>  Lancer le test</a>
-<a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a>
-<a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-log-out"></span>  Version du projet</a>
+<a href="lancer_test?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-refresh"></span> Â Lancer le test</a>
+<a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span> Â TÃ©lÃ©charger le code</a>
+<a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-log-out"></span> Â Version du projet</a>
 <br /><br /><br />
 
 <div class="row">
@@ -28,18 +28,18 @@ $us = $controleur->getDonneesUS($_GET['ID'])
 		<div class="panel panel-primary">
 			<table class="table table-striped table-condensed">
 				<div class="panel-heading"> 
-					<h3 class="panel-title">Liste des tâches associées</h3>
+					<h3 class="panel-title">Liste des tÃ¢ches associÃ©es</h3>
 				</div>
 				<thead>
 					<tr>
-						<th>Numéro</th>
+						<th>NumÃ©ro</th>
 						<th>Titre</th>
 						<th>Type</th>
-						<th>Dépendances</th>
-						<th>Coût</th>
-						<th>Développeur</th>
+						<th>DÃ©pendances</th>
+						<th>CoÃ»t</th>
+						<th>DÃ©veloppeur</th>
 						<th>Statut</th>
-						<th>Date réalisation</th>
+						<th>Date rÃ©alisation</th>
 						<th>Date test</th>
 					</tr>
 				</thead>
@@ -51,7 +51,7 @@ $us = $controleur->getDonneesUS($_GET['ID'])
 	</section>
 </div>
 
-<a href="associer_tache?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span>  Associer une nouvelle tâche</a>
+<a href="associer_tache?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span> Â Associer une nouvelle tÃ¢che</a>
 
 <?php include("structure/bas_design.php"); ?>					
 						

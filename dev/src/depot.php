@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 include("structure/haut_design.php"); 
 
 include("controleurs/controleur_depot.php");
 ?>
 
-<h1>TODO : Gestion du dépôt GIT</h1>
+<h1>TODO : Gestion du dÃ©pÃ´t GIT</h1>
 
-<p>Attention : Un modèle et un contrôleur (vides) existent déjà pour cette page.</p>
+<p>Attention : Un modÃ¨le et un contrÃ´leur (vides) existent dÃ©jÃ  pour cette page.</p>
 
 <?php include("structure/bas_design.php"); ?>					
 						

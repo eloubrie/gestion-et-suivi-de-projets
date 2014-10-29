@@ -1,10 +1,10 @@
-<?php
+ï»¿<?php
 include("structure/haut_design.php"); 
 
 include("controleurs/controleur_backlog.php");
 ?>
 
-<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
+<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Â CrÃ©er une nouvelle US</a>
 <br /><br />
 
 <div class="row">
@@ -16,12 +16,12 @@ include("controleurs/controleur_backlog.php");
 				</div>
 				<thead>
 					<tr>
-						<th>Numéro</th>
+						<th>NumÃ©ro</th>
 						<th>Titre</th>
 						<th>Sprint</th>
-						<th>Dépendances</th>
-						<th>Coût</th>
-						<th>Date début</th>
+						<th>DÃ©pendances</th>
+						<th>CoÃ»t</th>
+						<th>Date dÃ©but</th>
 						<th>Date fin</th>
 						<th>Statut</th>
 						<th>Date test</th>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include("modeles/modele_us.php");
 
 class Controleur
@@ -25,7 +25,7 @@ class Controleur
 		else if($ligne['statut'] == 1)
 		{ $ligne['statut'] = '<span class="encours">En cours</span>'; }
 		else
-		{ $ligne['statut'] = '<span class="termine">Termin�</span>'; }
+		{ $ligne['statut'] = '<span class="termine">Terminé</span>'; }
 	
 		?>
 		<tr>

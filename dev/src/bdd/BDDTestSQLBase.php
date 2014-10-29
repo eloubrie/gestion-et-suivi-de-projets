@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include('bdd.php');
 include ('BDDTestSQL.php');
