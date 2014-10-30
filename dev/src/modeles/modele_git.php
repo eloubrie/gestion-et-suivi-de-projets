@@ -1,13 +1,16 @@
 ﻿<?php
 class ModeleGit
 {
-	/*
-	Implémenter ici les méthodes effectuant des requêtes SQL.
-	
-	Exemple :
-	public function get_US()
-	{
-		return BDD::getConnection()->query('SELECT * FROM us');
-	}
-	*/
+    public function _getGitURL(){
+        return BDD::getConnection()->query("SELECT lien FROM git");
+    }
+    
+    public function _setGitURL($url){
+        BDD::getConnection()->query("UPDATE git SET lien = ".$url);
+    }
+    
+    // for later implementation
+    public function _getMasterVersion($version){
+        
+    }
 }

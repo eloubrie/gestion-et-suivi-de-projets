@@ -1,14 +1,24 @@
 ﻿<?php
-include("modeles/modele_vide.php");
+include("modeles/modele_git.php");
 
-class ControleurDepot
+class ControleurGit
 {
 	private $modele;
 
 	public function __construct()
 	{
-		$this->modele = new Modele();
+            $this->modele = new ModeleGit();
 	}
+        
+        public function _printGitLink(){
+            $req = $this->modele->_getGitURL();
+            $data = $req->fetch();
+            return $data['lien'];
+        } 
+        
+        public function _modifyGitLink($url){
+            $this->modele->_setGitURL($url);
+        }
 	
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
@@ -37,3 +47,4 @@ class ControleurDepot
 	}	
 	*/
 }
+
