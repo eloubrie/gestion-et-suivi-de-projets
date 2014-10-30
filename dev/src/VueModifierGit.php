@@ -2,7 +2,7 @@
 include("structure/haut_design.php");
 ?>
 
-<form method="post"  id="formModifGitURL" name="formModifGitURL" action='controleurs/modifierGit.php'/>
+<form method="post" id="formModifGitURL" name="formModifGitURL" action='c_modifierGit.php'/>
      <fieldset>
         <legend>Modification du dépôt Git</legend>
         <label for='NewURL'>URL du dépôt</label>
