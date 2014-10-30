@@ -15,7 +15,7 @@
 				<div id="menu">
 					<a href="index.php">Page d'accueil</a>
 					<a href="backlog.php">Backlog</a>
-					<a href="taches.php">Liste des tâches</a>
+					<a href="liste_taches.php">Liste des tâches</a>
 					<a href="gantt.php">Gantt</a>
 					<a href="bilan.php">Bilan</a>
 					<a href="depot.php">Dépôt git</a>
@@ -30,3 +30,4 @@
 				<div id="corps">
 					
 					<div id="texte">
+					<?php include('bdd/bdd.php'); ?>

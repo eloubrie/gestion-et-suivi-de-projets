@@ -2,21 +2,12 @@
 include("structure/haut_design.php"); 
 
 include("controleurs/controleur_us.php");
+include("controleurs/controleur_tache.php");
+$controleurUS = new ControleurUS(); 
+$controleurTache = new ControleurTache(); 
 
-$us = $controleur->getDonneesUS($_GET['ID'])
+$controleurUS->build_infos_us($_GET['ID']);
 ?>
-
-<h3><?php echo $us['titre']; ?> (US numéro <?php echo $us['ID']; ?>)</h3><br />
-<p><b>Description :</b> <?php echo $us['description']; ?></p>
-<p><b>Sprint :</b> <?php echo $us['sprint']; ?></p>
-<p><b>Coût :</b> <?php echo $us['cout']; ?></p>
-<p><b>Dépendances :</b> <?php echo $us['dependances']; ?></p>
-<p><b>Statut :</b> <?php echo $us['statut']; ?></p>
-<p><b>Date début :</b> <?php echo $us['date_debut']; ?></p>
-<p><b>Date fin :</b> <?php echo $us['date_fin']; ?></p>
-<p><b>Description du test :</b> <?php echo $us['description_test']; ?></p>
-<p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
-<br />
 
 <a href="lancer_test?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-refresh"></span>  Lancer le test</a>
 <a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a>
@@ -44,7 +35,7 @@ $us = $controleur->getDonneesUS($_GET['ID'])
 					</tr>
 				</thead>
 				<tbody>
-					<?php $controleur->build_liste_taches_us($_GET['ID']); ?>
+					<?php $controleurTache->build_liste_taches_us($_GET['ID']); ?>
 				</tbody>
 			</table>
 		</div>
