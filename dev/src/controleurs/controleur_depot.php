@@ -13,9 +13,7 @@ class ControleurGit
         public function _printGitLink(){
             $req = $this->modele->_getGitURL();
             $data = $req->fetch();
-            foreach ($data as $link){
-                return $link;
-            }
+            return $data['lien'];
         } 
         
         public function _modifyGitLink($url){
