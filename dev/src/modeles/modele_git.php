@@ -8,7 +8,7 @@ class ModeleGit
     }
     
     public function _setGitURL($url){
-        BDD::getConnection()->query("UPDATE git SET lien = ".$url);
+        BDD::getConnection()->query("UPDATE git SET lien = ".'"'.$url.'"'." WHERE ID='1'");
     }
     
     // for later implementation
