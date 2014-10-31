@@ -5,7 +5,6 @@ include("controleurs/controleur_depot.php");
 
 ?>
 <?php
-echo $_POST['NewURL'];
 $controleur->_modifyGitLink($_POST['NewURL']);
 ?>
 <?php include("structure/bas_design.php"); ?>					
