@@ -1,7 +1,7 @@
 <?php
 include("structure/haut_design.php");
 //include("modeles/modele_git.php");
-include("controleurs/controleur_depot.php");
+include("controleurs/controleur_git.php");
 
 ?>
 <?php
