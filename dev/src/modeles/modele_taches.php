@@ -1,15 +1,18 @@
 ﻿<?php
-include('bdd/bdd.php'); 
-
 class ModeleTaches
 {
-	/*
-	Implémenter ici les méthodes effectuant des requêtes SQL.
-	
-	Exemple :
-	public function get_US()
+	public function get_taches()
 	{
-		return BDD::getConnection()->query('SELECT * FROM us');
+		return BDD::getConnection()->query('SELECT * FROM taches');
 	}
-	*/
+	
+	public function get_tache($id)
+	{
+		return BDD::getConnection()->query('SELECT * FROM taches WHERE ID = '.$id);
+	}
+	
+	public function get_taches_US($id)
+	{
+		return BDD::getConnection()->query('SELECT * FROM taches WHERE us = '.$id);
+	}
 }

@@ -1,6 +1,4 @@
 ﻿<?php
-include('bdd/bdd.php'); 
-
 class ModeleDeveloppeurs
 {
 	/*

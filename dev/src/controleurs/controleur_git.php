@@ -48,4 +48,3 @@ class ControleurGit
 	*/
 }
 
-$controleur = new ControleurGit(); 

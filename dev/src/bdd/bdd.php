@@ -11,7 +11,7 @@ class BDD
 
 	private function __construct()
 	{
-		$this->PDOInstance = new PDO('mysql:dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,self::DEFAULT_SQL_USER ,self::DEFAULT_SQL_PASS);    
+		$this->PDOInstance = new PDO('mysql:charset=utf8;dbname='.self::DEFAULT_SQL_DTB.';host='.self::DEFAULT_SQL_HOST,self::DEFAULT_SQL_USER ,self::DEFAULT_SQL_PASS);    
 	}
 
 	public static function getConnection()

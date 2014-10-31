@@ -1,7 +1,7 @@
 ﻿<?php
 include("modeles/modele_vide.php");
 
-class Controleur
+class ControleurConnexion
 {
 	private $modele;
 
@@ -37,5 +37,3 @@ class Controleur
 	}	
 	*/
 }
-
-$controleur = new Controleur(); 

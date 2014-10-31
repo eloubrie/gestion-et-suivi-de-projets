@@ -1,11 +1,11 @@
 ﻿<?php
 include("structure/haut_design.php"); 
 
-include("controleurs/controleur_us.php");
-$controleurUS = new ControleurUS(); 
+include("controleurs/controleur_tache.php");
+$controleurTache = new controleurTache(); 
 ?>
 
-<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
+<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle tâche</a>
 <br /><br />
 
 <div class="row">
@@ -13,24 +13,24 @@ $controleurUS = new ControleurUS();
 		<div class="panel panel-primary">
 			<table class="table table-striped table-condensed">
 				<div class="panel-heading"> 
-					<h3 class="panel-title">Liste des US</h3>
+					<h3 class="panel-title">Liste des tâches</h3>
 				</div>
 				<thead>
 					<tr>
 						<th>Numéro</th>
 						<th>Titre</th>
-						<th>Sprint</th>
+						<th>Type</th>
 						<th>Dépendances</th>
 						<th>Coût</th>
-						<th>Date début</th>
-						<th>Date fin</th>
+						<th>Développeur</th>
 						<th>Statut</th>
+						<th>Date réalisation</th>
 						<th>Date test</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php $controleurUS->build_backlog(); ?>
+					<?php $controleurTache->build_liste_taches(); ?>
 				</tbody>
 			</table>
 		</div>
