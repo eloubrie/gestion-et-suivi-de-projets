@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 include("structure/haut_design.php");
 ?>
 
