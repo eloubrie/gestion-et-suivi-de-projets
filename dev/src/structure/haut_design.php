@@ -18,7 +18,7 @@
 					<a href="liste_taches.php">Liste des tâches</a>
 					<a href="gantt.php">Gantt</a>
 					<a href="bilan.php">Bilan</a>
-					<a href="depot.php">Dépôt git</a>
+					<a href="git.php">Dépôt git</a>
 					<a href="inscription.php">Inscription</a>
 					<a href="connexion.php">Connexion</a>
 				</div>

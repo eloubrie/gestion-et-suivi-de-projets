@@ -1,6 +1,4 @@
 ﻿<?php
-
-include('bdd.php');
 include ('BDDTestSQL.php');
 
 //Class to launch non-parametrics test
