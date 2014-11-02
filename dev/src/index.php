@@ -1,4 +1,4 @@
-﻿<?php include("structure/haut_design.php"); ?>
+﻿<?php include("structure/top_page.php"); ?>
 
 <?php include ("bdd/BDDTestManager.php"); ?>
 
@@ -17,5 +17,5 @@
 
 <p>Ces différents outils vous permettront de structurer beaucoup plus facilement le déroulement de votre projet.</p>
 
-<?php include("structure/bas_design.php"); ?>					
+<?php include("structure/bottom_page.php"); ?>					
 						

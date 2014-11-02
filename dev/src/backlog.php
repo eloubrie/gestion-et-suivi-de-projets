@@ -1,8 +1,8 @@
 ﻿<?php
-include("structure/haut_design.php"); 
+include("structure/top_page.php"); 
 
-include("controleurs/controleur_us.php");
-$controleurUS = new ControleurUS(); 
+include("controllers/us.php");
+$controllerUs = new ControllerUs(); 
 ?>
 
 <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
@@ -30,12 +30,12 @@ $controleurUS = new ControleurUS();
 					</tr>
 				</thead>
 				<tbody>
-					<?php $controleurUS->build_backlog(); ?>
+					<?php $controllerUs->_buildBacklog(); ?>
 				</tbody>
 			</table>
 		</div>
 	</section>
 </div>
 
-<?php include("structure/bas_design.php"); ?>					
+<?php include("structure/bottom_page.php"); ?>					
 						

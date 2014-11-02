@@ -1,13 +1,13 @@
 ﻿<?php
-include("modeles/modele_vide.php");
+include("models/empty.php");
 
-class ControleurGannt
+class ControllerResults
 {
-	private $modele;
+	private $model;
 
 	public function __construct()
 	{
-		$this->modele = new Modele();
+		$this->model = new Model();
 	}
 	
 	/*

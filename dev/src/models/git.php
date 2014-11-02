@@ -1,5 +1,5 @@
 ﻿<?php
-class ModeleGit
+class ModelGit
 {
     public function _getGitURL(){
         return BDD::getConnection()->query("SELECT lien FROM git");

@@ -1,8 +1,8 @@
 ﻿<?php
-include("structure/haut_design.php");
+include("structure/top_page.php");
 ?>
 
-<form method="post" id="formModifGitURL" name="formModifGitURL" action='c_modifierGit.php'>
+<form method="post" id="formModifGitURL" name="formModifGitURL" action='c_modifyGit.php'>
      <fieldset>
         <legend>Modification du dépôt Git</legend>
         <label for='NewURL'>URL du dépôt</label>
@@ -13,4 +13,4 @@ include("structure/haut_design.php");
  </form>
 
 
-<?php include("structure/bas_design.php"); ?>					
+<?php include("structure/bottom_page.php"); ?>					

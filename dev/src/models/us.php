@@ -1,12 +1,12 @@
 ﻿<?php
-class ModeleUS
+class ModelUs
 {
-	public function get_backlog()
+	public function _getBacklog()
 	{
 		return BDD::getConnection()->query('SELECT * FROM us');
 	}
 
-	public function get_US($id)
+	public function _getUs($id)
 	{
 		return BDD::getConnection()->query('SELECT * FROM us WHERE ID = '.$id);
 	}

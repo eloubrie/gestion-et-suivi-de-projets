@@ -1,17 +1,17 @@
 ﻿<?php
-class ModeleTaches
+class ModelTasc
 {
-	public function get_taches()
+	public function _getAllTascs()
 	{
 		return BDD::getConnection()->query('SELECT * FROM taches');
 	}
 	
-	public function get_tache($id)
+	public function _getTasc($id)
 	{
 		return BDD::getConnection()->query('SELECT * FROM taches WHERE ID = '.$id);
 	}
 	
-	public function get_taches_US($id)
+	public function _getTascsFromUs($id)
 	{
 		return BDD::getConnection()->query('SELECT * FROM taches WHERE us = '.$id);
 	}

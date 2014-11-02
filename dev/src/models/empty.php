@@ -1,5 +1,5 @@
 ﻿<?php
-class ModeleDeveloppeurs
+class Model
 {
 	/*
 	Implémenter ici les méthodes effectuant des requêtes SQL.

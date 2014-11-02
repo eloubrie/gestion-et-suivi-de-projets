@@ -1,24 +1,14 @@
 ﻿<?php
-include("modeles/modele_git.php");
+include("models/empty.php");
 
-class ControleurGit
+class ControllerGantt
 {
-	private $modele;
+	private $model;
 
 	public function __construct()
 	{
-            $this->modele = new ModeleGit();
+		$this->model = new Model();
 	}
-        
-        public function _printGitLink(){
-            $req = $this->modele->_getGitURL();
-            $data = $req->fetch();
-            return $data['lien'];
-        } 
-        
-        public function _modifyGitLink($url){
-            $this->modele->_setGitURL($url);
-        }
 	
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
@@ -47,4 +37,3 @@ class ControleurGit
 	}	
 	*/
 }
-

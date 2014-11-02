@@ -1,8 +1,8 @@
 ﻿<?php
-include("structure/haut_design.php"); 
+include("structure/top_page.php"); 
 
-include("controleurs/controleur_tache.php");
-$controleurTache = new controleurTache(); 
+include("controllers/tasc.php");
+$controllerTasc = new ControllerTasc(); 
 ?>
 
 <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle tâche</a>
@@ -30,12 +30,12 @@ $controleurTache = new controleurTache();
 					</tr>
 				</thead>
 				<tbody>
-					<?php $controleurTache->build_liste_taches(); ?>
+					<?php $controllerTasc->_buildTascList(); ?>
 				</tbody>
 			</table>
 		</div>
 	</section>
 </div>
 
-<?php include("structure/bas_design.php"); ?>					
+<?php include("structure/bottom_page.php"); ?>					
 						

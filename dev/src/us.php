@@ -1,15 +1,15 @@
 ﻿<?php
-include("structure/haut_design.php"); 
+include("structure/top_page.php"); 
 
-include("controleurs/controleur_us.php");
-include("controleurs/controleur_tache.php");
-$controleurUS = new ControleurUS(); 
-$controleurTache = new ControleurTache(); 
+include("controllers/us.php");
+include("controllers/tasc.php");
+$controllerUs = new ControllerUs(); 
+$controllerTasc = new ControllerTasc(); 
 
-$controleurUS->build_infos_us($_GET['ID']);
+$controllerUs->_buildUsInfo($_GET['ID']);
 ?>
 
-<a href="lancer_test?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-refresh"></span>  Lancer le test</a>
+<a href="launch_test?us=<?php echo $_GET['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-refresh"></span>  Lancer le test</a>
 <a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a>
 <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-log-out"></span>  Version du projet</a>
 <br /><br /><br />
@@ -35,14 +35,14 @@ $controleurUS->build_infos_us($_GET['ID']);
 					</tr>
 				</thead>
 				<tbody>
-					<?php $controleurTache->build_liste_taches_us($_GET['ID']); ?>
+					<?php $controllerTasc->_buildTascListFromUs($_GET['ID']); ?>
 				</tbody>
 			</table>
 		</div>
 	</section>
 </div>
 
-<a href="associer_tache?us=<?php echo $us['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span>  Associer une nouvelle tâche</a>
+<a href="associate_tasc?us=<?php echo $_GET['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span>  Associer une nouvelle tâche</a>
 
-<?php include("structure/bas_design.php"); ?>					
+<?php include("structure/bottom_page.php"); ?>					
 						
