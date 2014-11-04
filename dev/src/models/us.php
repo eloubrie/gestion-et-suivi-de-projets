@@ -26,4 +26,27 @@ class ModelUs
 		mysql_real_escape_string ($descriptiontest)."','".
 		mysql_real_escape_string ($linkgit)."')");
 	}
+	
+	public function _modifUs($ID, $title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	{
+	
+		BDD::getConnection()->query("UPDATE us SET 
+		`titre`='".mysql_real_escape_string ($title)."',
+		`description`='".mysql_real_escape_string ($description)."',
+		`sprint`='".mysql_real_escape_string ($sprint)."',
+		`cout`='".mysql_real_escape_string ($cout)."',
+		`dependances`='".mysql_real_escape_string ($dependances)."',
+		`statut`='".mysql_real_escape_string ($statut)."',
+		`date_debut`='".mysql_real_escape_string ($datebegin)."',
+		`date_fin`='".mysql_real_escape_string ($dateend)."',
+		`code_test`='".mysql_real_escape_string ($codetest)."',
+		`description_test`='".mysql_real_escape_string ($descriptiontest)."',
+		`lien_git`='".mysql_real_escape_string ($linkgit)."' 
+		WHERE ID = ".$ID);
+	}
+	
+	public function _supprUs($ID)
+	{
+		BDD::getConnection()->query("DELETE FROM us WHERE ID=".$ID);
+	}
 }

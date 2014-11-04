@@ -22,6 +22,11 @@ class ControllerUs
 		return $status;
 	}
 	
+	public function _getUs($id)
+	{
+		return $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
+	}
+	
 	public function _buildBacklog()
 	{
 		foreach($this->modelUs->_getBacklog() as $line)
@@ -44,8 +49,8 @@ class ControllerUs
 			<td><?php echo $this->_UsStatus($line['statut']); ?></td>
 			<td><?php echo $line['date_test']; ?></td>
 			<td>
-				<a href="modify_us.php?us=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-				<a href="delete_us.php?us=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+				<a href="gestion_us.php?modif_US=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="gestion_us.php?action=suppr&US_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 			</td>
 		</tr>
 		<?php
@@ -73,5 +78,15 @@ class ControllerUs
 	public function _insertUs($title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
 	{
 		$this->modelUs->_insertUs($title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
+	}
+	
+	public function _modifUs($ID, $title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	{
+		$this->modelUs->_modifUs($ID, $title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
+	}
+	
+		public function _supprUs($ID)
+	{
+		$this->modelUs->_supprUs($ID);
 	}
 }

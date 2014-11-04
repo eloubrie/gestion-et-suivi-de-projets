@@ -6,7 +6,7 @@ include("controllers/us.php");
 $controllerUs = new ControllerUs(); 
 ?>
 
-<a href="new_us.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
+<a href="gestion_us.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
 <br /><br />
 
 <div class="row">
