@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 04 Novembre 2014 à 19:41
+-- Généré le: Mar 04 Novembre 2014 à 20:00
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -54,6 +54,34 @@ CREATE TABLE IF NOT EXISTS `git` (
 
 INSERT INTO `git` (`ID`, `lien`) VALUES
 (1, 'https://github.com/eloubrie/gestion-et-suivi-de-projets');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sprints`
+--
+
+CREATE TABLE IF NOT EXISTS `sprints` (
+  `ID` int(11) NOT NULL,
+  `Coût` int(11) NOT NULL,
+  `Date de création` date NOT NULL,
+  `Date de début` date NOT NULL,
+  `Durée` varchar(255) NOT NULL,
+  `Date de fin` date NOT NULL,
+  `US associés` int(11) NOT NULL,
+  `Titre` text NOT NULL,
+  `Numéro du Sprint` int(11) NOT NULL,
+  `Description` text NOT NULL,
+  `Coût Validé` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `sprints`
+--
+
+INSERT INTO `sprints` (`ID`, `Coût`, `Date de création`, `Date de début`, `Durée`, `Date de fin`, `US associés`, `Titre`, `Numéro du Sprint`, `Description`, `Coût Validé`) VALUES
+(1, 16, '2014-11-04', '2014-11-05', '3 mois', '2014-11-06', 1, 'toto', 0, 'totottotottoottoto', 10);
 
 -- --------------------------------------------------------
 
