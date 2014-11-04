@@ -1,6 +1,7 @@
-﻿<?php include("structure/top_page.php"); ?>
-
-<?php include ("bdd/BDDTestManager.php"); ?>
+<?php 
+include("bdd/bdd.php");
+include("structure/top_page.php");
+?>
 
 <h3>Gérer son projet avec des outils adaptés</h3><br />
 
@@ -16,6 +17,10 @@
 </p>
 
 <p>Ces différents outils vous permettront de structurer beaucoup plus facilement le déroulement de votre projet.</p>
+<br />
 
-<?php include("structure/bottom_page.php"); ?>					
+<?php 
+include("bdd/BDDTestManager.php"); 
+include("structure/bottom_page.php"); 
+?>					
 						

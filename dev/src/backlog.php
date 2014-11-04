@@ -1,11 +1,12 @@
-﻿<?php
+<?php
+include("bdd/bdd.php");
 include("structure/top_page.php"); 
 
 include("controllers/us.php");
 $controllerUs = new ControllerUs(); 
 ?>
 
-<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
+<a href="new_us.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle US</a>
 <br /><br />
 
 <div class="row">

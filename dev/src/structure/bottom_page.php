@@ -1,4 +1,4 @@
-﻿						<div class="clear_both"></div>
+						<div class="clear_both"></div>
 						
 					</div>
 					

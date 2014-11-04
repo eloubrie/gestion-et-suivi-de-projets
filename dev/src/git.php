@@ -1,4 +1,5 @@
-﻿<?php
+<?php
+include("bdd/bdd.php");
 include("structure/top_page.php");
 
 include("controllers/git.php");

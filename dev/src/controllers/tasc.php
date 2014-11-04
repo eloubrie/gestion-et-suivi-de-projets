@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include("models/tasc.php");
 
 class ControllerTasc

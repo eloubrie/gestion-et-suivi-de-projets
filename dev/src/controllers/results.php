@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include("models/empty.php");
 
 class ControllerResults

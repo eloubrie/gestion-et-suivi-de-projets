@@ -5,7 +5,7 @@
 		<title>Conduite de projet</title>
 		<link rel="stylesheet" media="screen" type="text/css" title="Design" href="structure/design/style.css" />
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 
 	<body>
@@ -30,4 +30,3 @@
 				<div id="corps">
 					
 					<div id="texte">
-					<?php include('bdd/bdd.php'); ?>

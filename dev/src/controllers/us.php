@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include("models/us.php");
 
 class ControllerUs
@@ -68,5 +68,10 @@ class ControllerUs
 		<p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
 		<br />
 		<?php
+	}
+	
+	public function _insertUs($title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	{
+		$this->modelUs->_insertUs($title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
 	}
 }

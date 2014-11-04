@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include("models/git.php");
 
 class ControllerGit
