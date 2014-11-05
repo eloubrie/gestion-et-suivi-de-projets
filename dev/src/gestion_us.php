@@ -65,7 +65,7 @@ else
 							<option value="0">Aucun</option>
 							<?php
 							foreach($sprints as $s)
-							{ ?><option value="<?php echo $s['Numéro du Sprint']; ?>" <?php if($us['sprint']==$s['Numéro du Sprint']) { echo "selected"; } ?>><?php echo $s['Numéro du Sprint']; ?></option><?php }
+							{ ?><option value="<?php echo $s['ID']; ?>" <?php if($us['ID_sprint']==$s['ID']) { echo "selected"; } ?>><?php echo $s['Numero_du_Sprint']; ?></option><?php }
 							?>
 						</select>
 					</div>

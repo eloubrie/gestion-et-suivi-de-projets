@@ -41,7 +41,7 @@ class ControllerUs
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
 			<td><a href="us.php?ID=<?php echo $line['ID']; ?>"><?php echo $line['titre']; ?></a></td>
-			<td><?php echo $line['sprint']; ?></td>
+			<td><?php echo "Acorriger"; ?></td>
 			<td><?php echo $line['dependances']; ?></td>
 			<td><?php echo $line['cout']; ?></td>
 			<td><?php echo $line['date_debut']; ?></td>

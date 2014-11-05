@@ -15,7 +15,7 @@ class ModelUs
 	{
 		BDD::getConnection()->query("INSERT INTO us VALUES (0,'".
 		mysql_real_escape_string ($title)."','".
-		mysql_real_escape_string ($description)."',0,'".
+		mysql_real_escape_string ($description)."','".
 		mysql_real_escape_string ($sprint)."','".
 		mysql_real_escape_string ($cout)."','".
 		mysql_real_escape_string ($dependances)."','".
@@ -33,7 +33,7 @@ class ModelUs
 		BDD::getConnection()->query("UPDATE us SET 
 		`titre`='".mysql_real_escape_string ($title)."',
 		`description`='".mysql_real_escape_string ($description)."',
-		`sprint`='".mysql_real_escape_string ($sprint)."',
+		`ID_sprint`='".mysql_real_escape_string ($sprint)."',
 		`cout`='".mysql_real_escape_string ($cout)."',
 		`dependances`='".mysql_real_escape_string ($dependances)."',
 		`statut`='".mysql_real_escape_string ($statut)."',

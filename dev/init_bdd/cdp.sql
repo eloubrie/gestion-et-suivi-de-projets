@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Mer 05 Novembre 2014 à 15:33
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Client: localhost
+-- Généré le: Mer 05 Novembre 2014 à 23:07
+-- Version du serveur: 5.6.12-log
+-- Version de PHP: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `cdp`
+-- Base de données: `cdp`
 --
+CREATE DATABASE IF NOT EXISTS `cdp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `cdp`;
 
 -- --------------------------------------------------------
 
@@ -71,7 +73,15 @@ CREATE TABLE IF NOT EXISTS `sprints` (
   `Description` text COLLATE utf8_unicode_ci NOT NULL,
   `Cout_valide` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `sprints`
+--
+
+INSERT INTO `sprints` (`ID`, `Numero_du_Sprint`, `Cout`, `Date_de_creation`, `Date_de_debut`, `Duree`, `Date_de_fin`, `Titre`, `Description`, `Cout_valide`) VALUES
+(2, 1, 15, '0000-00-00', '0000-00-00', '15', '0000-00-00', 'titre', 'desc', 0),
+(3, 2, 14, '0000-00-00', '0000-00-00', '14', '0000-00-00', 'titre', 'desc', 14);
 
 -- --------------------------------------------------------
 
@@ -112,19 +122,27 @@ CREATE TABLE IF NOT EXISTS `us` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `titre` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
-  `projet` int(11) NOT NULL,
   `ID_sprint` int(11) DEFAULT NULL,
   `cout` int(11) NOT NULL,
+  `dependances` text COLLATE utf8_unicode_ci NOT NULL,
   `statut` int(11) NOT NULL,
   `date_debut` date NOT NULL,
   `date_fin` date NOT NULL,
   `date_test` date DEFAULT NULL,
-  `ID_test` int(11) DEFAULT NULL,
+  `code_test` text COLLATE utf8_unicode_ci,
   `description_test` text COLLATE utf8_unicode_ci,
-  `ID_git` int(11) DEFAULT NULL,
+  `lien_git` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`ID`),
   KEY `ID_sprint` (`ID_sprint`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
+
+--
+-- Contenu de la table `us`
+--
+
+INSERT INTO `us` (`ID`, `titre`, `description`, `ID_sprint`, `cout`, `dependances`, `statut`, `date_debut`, `date_fin`, `date_test`, `code_test`, `description_test`, `lien_git`) VALUES
+(10, 'Test', 'qsdqsd', 3, 610, 'qsd', 2, '1225-02-25', '1992-11-02', '0000-00-00', 'sfd', 'sdfsdf', 'lien'),
+(11, 'Test2', 'desc2', 3, 55, 'dep', 2, '1992-11-02', '1311-11-11', '0000-00-00', 'code', 'desc', 'lien');
 
 --
 -- Contraintes pour les tables exportées
