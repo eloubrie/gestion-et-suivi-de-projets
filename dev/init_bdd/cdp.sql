@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 05 Novembre 2014 à 15:13
+-- Généré le :  Mer 05 Novembre 2014 à 15:30
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -42,9 +42,9 @@ CREATE TABLE IF NOT EXISTS `developpeurs` (
 
 CREATE TABLE IF NOT EXISTS `git` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `lien` text NOT NULL,
+  `lien` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `git`
@@ -81,25 +81,26 @@ CREATE TABLE IF NOT EXISTS `sprints` (
 
 CREATE TABLE IF NOT EXISTS `taches` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `titre` text NOT NULL,
-  `description` text NOT NULL,
-  `us` int(11) NOT NULL,
+  `ID_US` int(11) DEFAULT NULL,
+  `titre` text COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
   `type` int(11) NOT NULL,
   `cout` int(11) NOT NULL,
-  `dependances` text NOT NULL,
-  `developpeur` int(11) NOT NULL,
+  `dependances` text COLLATE utf8_unicode_ci NOT NULL,
+  `developpeur` int(11) DEFAULT NULL,
   `statut` int(11) NOT NULL,
-  `date_realisation` date NOT NULL,
-  `date_test` date NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `date_realisation` date DEFAULT NULL,
+  `date_test` date DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ID_US` (`ID_US`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `taches`
 --
 
-INSERT INTO `taches` (`ID`, `titre`, `description`, `us`, `type`, `cout`, `dependances`, `developpeur`, `statut`, `date_realisation`, `date_test`) VALUES
-(1, 'Tache 1', 'Description T1', 1, 2, 3, '4', 5, 1, '0000-00-00', '0000-00-00');
+INSERT INTO `taches` (`ID`, `ID_US`, `titre`, `description`, `type`, `cout`, `dependances`, `developpeur`, `statut`, `date_realisation`, `date_test`) VALUES
+(1, NULL, 'Tache 1', 'Description T1', 2, 3, '4', 5, 1, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -128,6 +129,12 @@ CREATE TABLE IF NOT EXISTS `us` (
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `taches`
+--
+ALTER TABLE `taches`
+  ADD CONSTRAINT `us` FOREIGN KEY (`ID_US`) REFERENCES `us` (`ID`);
 
 --
 -- Contraintes pour la table `us`
