@@ -45,6 +45,12 @@ html, body
 	margin : auto;
 }
 
+#logoSite
+{
+        float : left;
+        margin-top: 30px;
+}
+
 #banniere h1
 {
 	float : left;
@@ -111,13 +117,27 @@ img
 	margin : auto;
 }
 
-#menu a
+#menu a:not(#shiftLeft)
 {
 	padding-right : 15px;
 	padding-left : 15px;
 	font-size : 13px;
 	font-weight : bold;
 	color : white;
+}
+
+#pseudo, #shiftLeft
+{
+        padding-right : 15px;
+	padding-left : 65px;
+	font-size : 13px;
+	font-weight : bold;
+	color : #c8e5bc;
+}
+
+#shiftLeft
+{
+        color : white;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////// */
