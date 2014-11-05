@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 05 Novembre 2014 à 15:30
+-- Généré le :  Mer 05 Novembre 2014 à 15:33
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `developpeurs` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `pseudo` text NOT NULL,
-  `pass` text NOT NULL,
+  `pseudo` text COLLATE utf8_unicode_ci NOT NULL,
+  `pass` text COLLATE utf8_unicode_ci NOT NULL,
   `droits` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
