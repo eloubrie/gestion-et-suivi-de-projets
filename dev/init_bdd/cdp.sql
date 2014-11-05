@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Mar 04 Novembre 2014 à 20:00
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.16
+-- Client :  127.0.0.1
+-- Généré le :  Mer 05 Novembre 2014 à 14:28
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,10 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `cdp`
+-- Base de données :  `cdp`
 --
-CREATE DATABASE IF NOT EXISTS `cdp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cdp`;
 
 -- --------------------------------------------------------
 
@@ -53,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `git` (
 --
 
 INSERT INTO `git` (`ID`, `lien`) VALUES
-(1, 'https://github.com/eloubrie/gestion-et-suivi-de-projets');
+(1, 'https://github.com/eloubrie/gestion-et-suivi-de-projets/');
 
 -- --------------------------------------------------------
 
@@ -63,16 +61,14 @@ INSERT INTO `git` (`ID`, `lien`) VALUES
 
 CREATE TABLE IF NOT EXISTS `sprints` (
   `ID` int(11) NOT NULL,
-  `Coût` int(11) NOT NULL,
-  `Date de création` date NOT NULL,
-  `Date de début` date NOT NULL,
-  `Durée` varchar(255) NOT NULL,
-  `Date de fin` date NOT NULL,
-  `US associés` int(11) NOT NULL,
-  `Titre` text NOT NULL,
-  `Numéro du Sprint` int(11) NOT NULL,
-  `Description` text NOT NULL,
-  `Coût Validé` int(11) NOT NULL,
+  `Cout` int(11) NOT NULL,
+  `Date_de_creation` date NOT NULL,
+  `Date_de_debut` date NOT NULL,
+  `Duree` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Date_de_fin` date NOT NULL,
+  `Titre` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `Cout_valide` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -80,8 +76,8 @@ CREATE TABLE IF NOT EXISTS `sprints` (
 -- Contenu de la table `sprints`
 --
 
-INSERT INTO `sprints` (`ID`, `Coût`, `Date de création`, `Date de début`, `Durée`, `Date de fin`, `US associés`, `Titre`, `Numéro du Sprint`, `Description`, `Coût Validé`) VALUES
-(1, 16, '2014-11-04', '2014-11-05', '3 mois', '2014-11-06', 1, 'toto', 0, 'totottotottoottoto', 10);
+INSERT INTO `sprints` (`ID`, `Cout`, `Date_de_creation`, `Date_de_debut`, `Duree`, `Date_de_fin`, `Titre`, `Description`, `Cout_valide`) VALUES
+(1, 16, '2014-11-04', '2014-11-05', '3 mois', '2014-11-06', 'toto', 'totottotottoottoto', 10);
 
 -- --------------------------------------------------------
 
@@ -129,19 +125,21 @@ CREATE TABLE IF NOT EXISTS `us` (
   `date_debut` date NOT NULL,
   `date_fin` date NOT NULL,
   `date_test` date NOT NULL,
-  `code_test` text NOT NULL,
+  `ID_test` int(11) NOT NULL,
   `description_test` text NOT NULL,
-  `lien_git` text NOT NULL,
+  `ID_git` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `us`
 --
 
-INSERT INTO `us` (`ID`, `titre`, `description`, `projet`, `sprint`, `cout`, `dependances`, `statut`, `date_debut`, `date_fin`, `date_test`, `code_test`, `description_test`, `lien_git`) VALUES
-(1, 'titre 1', 'Us numéro 1', 0, 1, 2, '0', 0, '2014-10-22', '2014-10-25', '0000-00-00', '', 'Description du test 1', '0'),
-(2, 'titre 2', 'US numéro 2', 0, 2, 5, '1', 2, '2014-10-30', '2014-10-31', '0000-00-00', '', 'Description test numéro 2', '0');
+INSERT INTO `us` (`ID`, `titre`, `description`, `projet`, `sprint`, `cout`, `dependances`, `statut`, `date_debut`, `date_fin`, `date_test`, `ID_test`, `description_test`, `ID_git`) VALUES
+(1, 'titre 1', 'Us numéro 1', 0, 1, 2, '0', 0, '2014-10-22', '2014-10-25', '0000-00-00', 5, 'Description du test 1', 0),
+(2, 'titre 2', 'US numéro 2', 0, 2, 5, '1', 2, '2014-10-30', '2014-10-31', '0000-00-00', 2, 'Description test numéro 2', 0),
+(5, 'ddqd', 'dsqdsq', 8, 7, 6, 'ddsqdsqdsqd', 2, '2014-10-01', '2014-10-16', '2014-10-07', 7, 'zqdzqdqz', 2),
+(6, '', '', 0, 0, 0, '', 0, '0000-00-00', '0000-00-00', '0000-00-00', 0, '', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
