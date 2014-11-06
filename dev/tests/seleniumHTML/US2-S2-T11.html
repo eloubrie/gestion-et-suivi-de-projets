@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/gestion-et-suivi-de-projets/dev/src/index.php" />
+<title>Ajouter_US</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Ajouter_US</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/gestion-et-suivi-de-projets/dev/src/index.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Backlog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Créer une nouvelle US</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=title</td>
+	<td>toto</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=description</td>
+	<td>tata</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=sprint</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=datebegin</td>
+	<td>1992-02-25</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=dateend</td>
+	<td>1992-02-26</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=descriptiontest</td>
+	<td>a test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=codetest</td>
+	<td>$test = true</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=linkgit</td>
+	<td>https://lol?</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=toto</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[3]/td[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[3]/td[6]</td>
+	<td>1992-02-25</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[3]/td[7]</td>
+	<td>1992-02-26</td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>css=span.afaire</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[3]/td[9]</td>
+	<td>0000-00-00</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

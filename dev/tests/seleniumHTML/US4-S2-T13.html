@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/gestion-et-suivi-de-projets/dev/src/index.php" />
+<title>US4-S2-T13</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">US4-S2-T13</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/gestion-et-suivi-de-projets/dev/src/us.php?ID=34</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Backlog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Créer une nouvelle US</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=title</td>
+	<td>TestTest</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=description</td>
+	<td>a test</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=sprint</td>
+	<td>label=1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=descriptiontest</td>
+	<td>Test description</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=codetest</td>
+	<td>$test = true</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=TestTest</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[8]</td>
+	<td>Description du test : Test description</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Backlog</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[4]/td[10]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=descriptiontest</td>
+	<td>Test description v2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=codetest</td>
+	<td>$test = false</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=TestTest</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[8]</td>
+	<td>Description du test : Test description v2</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
