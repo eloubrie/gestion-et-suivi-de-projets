@@ -21,8 +21,14 @@ class ControllerUs
 		
 		return $status;
 	}
-	
-	public function _getUs($id)
+        
+        public function _getBacklog()
+        {
+                return $this->modelUs->_getBacklog();
+        }
+
+
+        public function _getUs($id)
 	{
 		return $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
 	}

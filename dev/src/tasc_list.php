@@ -6,7 +6,7 @@ include("controllers/tasc.php");
 $controllerTasc = new ControllerTasc(); 
 ?>
 
-<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle tâche</a>
+<a href="gestion_tasc.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer une nouvelle tâche</a>
 <br /><br />
 
 <div class="row">

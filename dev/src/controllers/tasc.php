@@ -9,6 +9,11 @@ class ControllerTasc
 	{
 		$this->modelTasc = new ModelTasc();
 	}
+        
+        public function _getTasc($id)
+	{
+		return $this->modelTasc->_getTasc($id)->fetch(PDO::FETCH_ASSOC);
+	}
 	
 	private function _tascType($t)
 	{
@@ -48,6 +53,9 @@ class ControllerTasc
 		{ $line['statut'] = '<span class="encours">En cours</span>'; }
 		else
 		{ $line['statut'] = '<span class="termine">Terminé</span>'; }
+                
+                if($line['developpeur'] == 0)
+                { $line['developpeur'] = ''; }
 	
 		?>
 		<tr>
@@ -61,8 +69,8 @@ class ControllerTasc
 			<td><?php echo $line['date_realisation']; ?></td>
 			<td><?php echo $line['date_test']; ?></td>
 			<td>
-				<a href="modify_tasc.php?ID=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-				<a href="delete_tasc.php?ID=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+				<a href="gestion_tasc.php?modif_tasc=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="gestion_tasc.php?action=suppr&tasc_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 			</td>
 		</tr>
 		<?php
@@ -85,5 +93,21 @@ class ControllerTasc
 		<p><b>Date du dernier test :</b> <?php echo $tasc['date_test']; ?></p>
 		<br />
 		<?php
+	}
+        
+        
+        public function _insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
+	{
+		$this->modelTasc->_insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate);
+	}
+        
+        public function _modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
+	{
+		$this->modelTasc->_modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate);
+	}
+        
+        public function _supprTasc($ID)
+	{
+		$this->modelTasc->_supprTasc($ID);
 	}
 }
