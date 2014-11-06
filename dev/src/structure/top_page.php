@@ -24,25 +24,25 @@ session_start();
 					<a href="results.php">Bilan</a>
 					<a href="git.php">Dépôt git</a>
 					<?php
-                                        if (isset($_SESSION['pseudo']))
-                                        {
-                                            echo '<span id="pseudo">'.$_SESSION['pseudo'].'</span>';
-                                        ?>
-                                            <a href="deconnexion.php">Déconnexion</a>
-                                        <?php
-                                        }
-                                        else
-                                        {
-                                        ?>
-                                            <a id="shiftLeft" href="inscription.php">Inscription</a>
-                                            <a href="connexion.php">Connexion</a>
-                                        <?php
-                                        }
-                                        ?>
+					if (isset($_SESSION['pseudo']))
+					{
+						echo '<span id="pseudo">'.$_SESSION['pseudo'].'</span>';
+						?>
+						<a href="deconnection.php">Déconnexion</a>
+						<?php
+					}
+					else
+					{
+						?>
+						<a id="shiftLeft" href="inscription.php">Inscription</a>
+						<a href="connection.php">Connexion</a>
+						<?php
+					}
+					?>
 				</div>
 			
 				<div id="banniere">
-                                        <img id="logoSite" alt="logo du site" src="structure/design/logoSite.png" />
+                    <img id="logoSite" alt="logo du site" src="structure/design/logoSite.png" />
 					<h1>Gestion et Suivi de Projet SCRUM</h1>
 				</div>
 			
