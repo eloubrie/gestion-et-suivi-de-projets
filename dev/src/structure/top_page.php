@@ -18,9 +18,9 @@ session_start();
 
 				<div id="menu">
 					<a href="index.php">Page d'accueil</a>
+                    <a href="sprint_list.php">Liste des sprints</a>
 					<a href="backlog.php">Backlog</a>
 					<a href="tasc_list.php">Liste des tâches</a>
-                                        <a href="sprint_list.php">Liste des sprints</a>
 					<a href="gantt.php">Gantt</a>
 					<a href="results.php">Bilan</a>
 					<a href="git.php">Dépôt git</a>

@@ -53,8 +53,8 @@ class ControllerUs
 			<td><?php echo $this->_UsStatus($line['statut']); ?></td>
 			<td><?php echo $line['date_test']; ?></td>
 			<td>
-				<a href="gestion_us.php?modif_US=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-				<a href="gestion_us.php?action=suppr&US_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+				<a href="manage_us.php?modif_US=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="manage_us.php?action=suppr&US_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 			</td>
 		</tr>
 		<?php

@@ -90,8 +90,8 @@ class ControllerTasc
 			<td><?php echo $line['date_realisation']; ?></td>
 			<td><?php echo $line['date_test']; ?></td>
 			<td>
-				<a href="gestion_tasc.php?modif_tasc=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-				<a href="gestion_tasc.php?action=suppr&tasc_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+				<a href="manage_tasc.php?modif_tasc=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="manage_tasc.php?action=suppr&tasc_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 			</td>
 		</tr>
 		<?php
