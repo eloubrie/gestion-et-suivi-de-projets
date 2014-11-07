@@ -32,7 +32,7 @@ else
     ?>
 
     <div class="bloc_formulaire">
-        <form class="form-horizontal" action="gestion_tasc.php<?php echo $action ?>" method="post">
+        <form class="form-horizontal" action="manage_tasc.php<?php echo $action ?>" method="post">
             <fieldset>
 
                 <!-- Form Name -->

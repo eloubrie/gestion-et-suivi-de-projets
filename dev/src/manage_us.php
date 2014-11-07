@@ -30,7 +30,7 @@ else
 	
 	<div class="bloc_formulaire">
 
-		<form class="form-horizontal" action="gestion_us.php<?php echo $action ?>" method="post">
+		<form class="form-horizontal" action="manage_us.php<?php echo $action ?>" method="post">
 			<fieldset>
 
 				<!-- Form Name -->
