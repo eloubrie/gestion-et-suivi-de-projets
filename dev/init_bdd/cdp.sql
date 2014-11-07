@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 06, 2014 at 09:07 
+-- Generation Time: Nov 07, 2014 at 11:25 
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -69,24 +69,24 @@ INSERT INTO `git` (`ID`, `lien`) VALUES
 
 CREATE TABLE IF NOT EXISTS `sprints` (
 `ID` int(11) NOT NULL,
-  `Numero_du_Sprint` int(11) NOT NULL,
-  `Cout` int(11) NOT NULL,
-  `Date_de_creation` date NOT NULL,
-  `Date_de_debut` date NOT NULL,
-  `Duree` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Date_de_fin` date NOT NULL,
-  `Titre` text COLLATE utf8_unicode_ci NOT NULL,
-  `Description` text COLLATE utf8_unicode_ci NOT NULL,
-  `Cout_valide` int(11) DEFAULT NULL
+  `numero_du_sprint` int(11) NOT NULL,
+  `cout` int(11) NOT NULL,
+  `date_creation` date NOT NULL,
+  `date_debut` date NOT NULL,
+  `duree` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `date_fin` date NOT NULL,
+  `titre` text COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `cout_valide` int(11) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `sprints`
 --
 
-INSERT INTO `sprints` (`ID`, `Numero_du_Sprint`, `Cout`, `Date_de_creation`, `Date_de_debut`, `Duree`, `Date_de_fin`, `Titre`, `Description`, `Cout_valide`) VALUES
-(2, 1, 15, '0000-00-00', '0000-00-00', '15', '0000-00-00', 'titre', 'desc', 0),
-(3, 2, 14, '0000-00-00', '0000-00-00', '14', '0000-00-00', 'titre', 'desc', 14);
+INSERT INTO `sprints` (`ID`, `numero_du_sprint`, `cout`, `date_creation`, `date_debut`, `duree`, `date_fin`, `titre`, `description`, `cout_valide`) VALUES
+(2, 1, 15, '2014-10-01', '0000-00-00', '15', '0000-00-00', 'sprint1', 'desc', 0),
+(3, 2, 14, '2014-10-14', '2014-10-15', '14', '2014-10-29', 'sprint2', 'desc', 14);
 
 -- --------------------------------------------------------
 
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `taches` (
   `statut` int(11) NOT NULL,
   `date_realisation` date DEFAULT NULL,
   `date_test` date DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `taches`
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `us` (
   `code_test` text COLLATE utf8_unicode_ci,
   `description_test` text COLLATE utf8_unicode_ci,
   `lien_git` text COLLATE utf8_unicode_ci
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `us`
@@ -205,12 +205,12 @@ MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `taches`
 --
 ALTER TABLE `taches`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `us`
 --
 ALTER TABLE `us`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --

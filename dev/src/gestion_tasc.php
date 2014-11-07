@@ -38,9 +38,9 @@ else
                 <!-- Form Name -->
                 <?php
                 if (!empty($_GET['modif_tasc'])) {
-                    ?><legend>Modifier une tache</legend><?php
+                    ?><legend>Modifier une tâche</legend><?php
                 } else {
-                    ?><legend>Créer une nouvelle tache</legend><?php }
+                    ?><legend>Créer une nouvelle tâche</legend><?php }
                 ?>
 
                 <!-- Title Input-->
@@ -53,9 +53,9 @@ else
 
                 <!-- Tasc Description Input -->
                 <div class="form-group">
-                    <label class="col-md-3 control-label" for="tascDescription">Description tache</label>
+                    <label class="col-md-3 control-label" for="tascDescription">Description tâche</label>
                     <div class="col-md-8">                     
-                        <textarea class="form-control" id="tascDescription" name="tascDescription" placeholder="Donner une description de la tache que vous voulez créer"><?php echo $tasc['description']?></textarea>
+                        <textarea class="form-control" id="tascDescription" name="tascDescription" placeholder="Donner une description de la tâche que vous voulez créer"><?php echo $tasc['description']?></textarea>
                     </div>
                 </div>
 
@@ -114,7 +114,7 @@ else
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="otherTascsDependencies">Dépendances</label>  
                     <div class="col-md-8">
-                        <input id="otherTascsDependencies" name="otherTascsDependencies" value="<?php echo $tasc['dependances']?>" type="text" placeholder="Dépendances inter-taches (exemple: 2,4,5)" class="form-control input-md">
+                        <input id="otherTascsDependencies" name="otherTascsDependencies" value="<?php echo $tasc['dependances']?>" type="text" placeholder="Dépendances inter-tâches (exemple: 2,4,5)" class="form-control input-md">
                     </div>
                 </div>
 
@@ -168,9 +168,9 @@ else
                         <button id="submit" name="submit" class="btn btn-primary">
                             <?php
                             if (!empty($_GET['modif_tasc'])) {
-                                ?>Modifier cette tache<?php
+                                ?>Modifier cette tâche<?php
                             } else {
-                                ?>Créer cette tache<?php }
+                                ?>Créer cette tâche<?php }
                             ?>
                         </button>
                     </div>
