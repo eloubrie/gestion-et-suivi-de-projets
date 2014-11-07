@@ -21,14 +21,13 @@ class ControllerUs
 		
 		return $status;
 	}
-        
-        public function _getBacklog()
-        {
-                return $this->modelUs->_getBacklog();
-        }
-
-
-        public function _getUs($id)
+	
+	public function _getBacklog()
+	{
+			return $this->modelUs->_getBacklog();
+	}
+		
+	public function _getUs($id)
 	{
 		return $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
 	}
@@ -47,8 +46,7 @@ class ControllerUs
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
 			<td><a href="us.php?ID=<?php echo $line['ID']; ?>"><?php echo $line['titre']; ?></a></td>
-			<td><?php echo "Acorriger"; ?></td>
-			<td><?php echo $line['dependances']; ?></td>
+			<td><?php echo $line['ID_sprint']; ?></td>
 			<td><?php echo $line['cout']; ?></td>
 			<td><?php echo $line['date_debut']; ?></td>
 			<td><?php echo $line['date_fin']; ?></td>
@@ -69,10 +67,9 @@ class ControllerUs
 		?>
 		<h3><?php echo $us['titre']; ?> (US numéro <?php echo $us['ID']; ?>)</h3><br />
 		<p><b>Description :</b> <?php echo $us['description']; ?></p>
-		<p><b>Sprint :</b> <?php echo $us['sprint']; ?></p>
+		<p><b>Sprint :</b> <?php echo $us['ID_sprint']; ?></p>
 		<p><b>Coût :</b> <?php echo $us['cout']; ?></p>
-		<p><b>Dépendances :</b> <?php echo $us['dependances']; ?></p>
-		<p><b>Statut :</b> <?php echo $us['statut']; ?></p>
+		<p><b>Statut :</b> <?php echo $this->_UsStatus($us['statut']); ?></p>
 		<p><b>Date début :</b> <?php echo $us['date_debut']; ?></p>
 		<p><b>Date fin :</b> <?php echo $us['date_fin']; ?></p>
 		<p><b>Description du test :</b> <?php echo $us['description_test']; ?></p>
@@ -81,14 +78,14 @@ class ControllerUs
 		<?php
 	}
 	
-	public function _insertUs($title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
 	{
-		$this->modelUs->_insertUs($title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
+		$this->modelUs->_insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
 	}
 	
-	public function _modifUs($ID, $title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	public function _modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
 	{
-		$this->modelUs->_modifUs($ID, $title, $description, $sprint, $cout, $dependances, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
+		$this->modelUs->_modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
 	}
 	
 		public function _supprUs($ID)

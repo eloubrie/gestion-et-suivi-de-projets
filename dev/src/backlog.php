@@ -21,7 +21,6 @@ $controllerUs = new ControllerUs();
 						<th>Numéro</th>
 						<th>Titre</th>
 						<th>Sprint</th>
-						<th>Dépendances</th>
 						<th>Coût</th>
 						<th>Date début</th>
 						<th>Date fin</th>

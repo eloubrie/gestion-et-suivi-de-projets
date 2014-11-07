@@ -1,6 +1,4 @@
 <?php
-include("models/developer.php");
-
 class ControllerDeveloper
 {
 	private $modelDeveloper;

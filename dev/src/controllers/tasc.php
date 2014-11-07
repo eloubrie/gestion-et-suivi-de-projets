@@ -1,5 +1,6 @@
 <?php
 include("models/tasc.php");
+include("models/developer.php");
 
 class ControllerTasc
 {
@@ -8,11 +9,24 @@ class ControllerTasc
 	public function __construct()
 	{
 		$this->modelTasc = new ModelTasc();
+		$this->modelDev = new ModelDeveloper();
 	}
         
-        public function _getTasc($id)
+    public function _getTasc($id)
 	{
 		return $this->modelTasc->_getTasc($id)->fetch(PDO::FETCH_ASSOC);
+	}
+	
+	private function _TascStatus($s)
+	{
+		if($s == 0)
+		{ $status = '<span class="afaire">A faire</span>'; }
+		else if($s == 1)
+		{ $status = '<span class="encours">En cours</span>'; }
+		else
+		{ $status = '<span class="termine">Terminé</span>'; }
+		
+		return $status;
 	}
 	
 	private function _tascType($t)
@@ -27,6 +41,13 @@ class ControllerTasc
 		{ $type = "Doc"; }
 		
 		return $type;
+	}
+	
+	private function _DeveloperName($id)
+	{
+		$dev = $this->modelDev->_getDeveloper($id)->fetch(PDO::FETCH_ASSOC);
+		
+		return $dev['pseudo'];
 	}
 	
 	public function _buildTascList()
@@ -64,8 +85,8 @@ class ControllerTasc
 			<td><?php echo $this->_tascType($line['type']); ?></td>
 			<td><?php echo $line['dependances']; ?></td>
 			<td><?php echo $line['cout']; ?></td>
-			<td><?php echo $line['developpeur']; ?></td>
-			<td><?php echo $line['statut']; ?></td>
+			<td><?php echo $this->_DeveloperName($line['developpeur']); ?></td>
+			<td><?php echo $this->_TascStatus($line['statut']); ?></td>
 			<td><?php echo $line['date_realisation']; ?></td>
 			<td><?php echo $line['date_test']; ?></td>
 			<td>
@@ -83,12 +104,12 @@ class ControllerTasc
 		?>
 		<h3><?php echo $tasc['titre']; ?> (tâche numéro <?php echo $tasc['ID']; ?>)</h3><br />
 		<p><b>Description :</b> <?php echo $tasc['description']; ?></p>
-		<p><b>US :</b> <?php echo $tasc['us']; ?></p>
+		<p><b>US :</b> <?php echo $tasc['ID_US']; ?></p>
 		<p><b>Type :</b> <?php echo $this->_tascType($tache['type']); ?></p>
 		<p><b>Coût :</b> <?php echo $tasc['cout']; ?></p>
 		<p><b>Dépendances :</b> <?php echo $tasc['dependances']; ?></p>
-		<p><b>Développeur :</b> <?php echo $tasc['developpeur']; ?></p>
-		<p><b>Statut :</b> <?php echo $tasc['statut']; ?></p>
+		<p><b>Développeur :</b> <?php echo $this->_DeveloperName($tasc['developpeur']); ?></p>
+		<p><b>Statut :</b> <?php echo $this->_TascStatus($tasc['statut']); ?></p>
 		<p><b>Date de réalisation :</b> <?php echo $tasc['date_realisation']; ?></p>
 		<p><b>Date du dernier test :</b> <?php echo $tasc['date_test']; ?></p>
 		<br />

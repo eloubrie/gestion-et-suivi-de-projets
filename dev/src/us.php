@@ -33,6 +33,7 @@ $controllerUs->_buildUsInfo($_GET['ID']);
 						<th>Statut</th>
 						<th>Date réalisation</th>
 						<th>Date test</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,8 +43,6 @@ $controllerUs->_buildUsInfo($_GET['ID']);
 		</div>
 	</section>
 </div>
-
-<a href="associate_tasc?us=<?php echo $_GET['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span>  Associer une nouvelle tâche</a>
 
 <?php include("structure/bottom_page.php"); ?>					
 						

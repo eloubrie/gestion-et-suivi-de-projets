@@ -6,7 +6,8 @@ class ModelDeveloper
 		return BDD::getConnection()->query('SELECT * FROM developpeurs');
 	}
         
-        public function _getDeveloper($id) {
-                return BDD::getConnection()->query('SELECT * FROM developpeurs WHERE ID = '.$id);
-        }
+	public function _getDeveloper($id) 
+	{
+		return BDD::getConnection()->query('SELECT * FROM developpeurs WHERE ID = '.$id);
+	}
 }

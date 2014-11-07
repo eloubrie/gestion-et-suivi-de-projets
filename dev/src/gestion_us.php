@@ -6,9 +6,9 @@ $controllerUs = new ControllerUs();
 $controllerSprint = new ControllerSprint(); 
 
 if($_GET['action']=="add")
-{ $controllerUs->_insertUs($_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['dependances'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
+{ $controllerUs->_insertUs($_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
 else if($_GET['action']=="modif")
-{ $controllerUs->_modifUs($_GET['modif_US'], $_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['dependances'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
+{ $controllerUs->_modifUs($_GET['modif_US'], $_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
 else if($_GET['action']=="suppr")
 { $controllerUs->_supprUs($_GET['US_suppr']); }
 else
@@ -65,17 +65,9 @@ else
 							<option value="0">Aucun</option>
 							<?php
 							foreach($sprints as $s)
-							{ ?><option value="<?php echo $s['ID']; ?>" <?php if($us['ID_sprint']==$s['ID']) { echo "selected"; } ?>><?php echo $s['Numero_du_Sprint']; ?></option><?php }
+							{ ?><option value="<?php echo $s['ID']; ?>" <?php if($us['ID_sprint']==$s['ID']) { echo "selected"; } ?>><?php echo $s['ID']; ?></option><?php }
 							?>
 						</select>
-					</div>
-				</div>
-
-				<!-- Text input-->
-				<div class="form-group">
-					<label class="col-md-3 control-label" for="dependances">Dépendances</label>  
-					<div class="col-md-8">
-						<input id="dependances" name="dependances" value="<?php echo $us['dependances']; ?>" type="text" placeholder="Dépendances" class="form-control input-md">
 					</div>
 				</div>
 

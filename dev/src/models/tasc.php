@@ -13,7 +13,7 @@ class ModelTasc
 	
 	public function _getTascsFromUs($id)
 	{
-		return BDD::getConnection()->query('SELECT * FROM taches WHERE us = '.$id);
+		return BDD::getConnection()->query('SELECT * FROM taches WHERE ID_US = '.$id);
 	}
         
         public function _insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
