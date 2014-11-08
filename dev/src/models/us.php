@@ -11,6 +11,11 @@ class ModelUs
 		return BDD::getConnection()->query('SELECT * FROM us WHERE ID = '.$id);
 	}
 	
+        public function _getUsFromSprint($id)
+	{
+		return BDD::getConnection()->query('SELECT * FROM us WHERE ID_Sprint = '.$id);
+	}
+        
 	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
 	{
 		BDD::getConnection()->query("INSERT INTO us VALUES (0,'".

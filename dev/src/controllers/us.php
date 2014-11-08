@@ -31,7 +31,15 @@ class ControllerUs
 	{
 		return $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
 	}
-	
+        
+        public function _buildUSListFromSprint($id)
+	{
+		foreach($this->modelUs->_getUsFromSprint($id) as $us)
+		{
+			$this->_buildBaclogLine($us);
+		}
+	}
+        
 	public function _buildBacklog()
 	{
 		foreach($this->modelUs->_getBacklog() as $line)
