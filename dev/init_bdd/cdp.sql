@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Ven 07 Novembre 2014 à 18:09
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.16
+-- Client :  127.0.0.1
+-- Généré le :  Lun 10 Novembre 2014 à 20:04
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,10 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `cdp`
+-- Base de données :  `cdp`
 --
-CREATE DATABASE IF NOT EXISTS `cdp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cdp`;
 
 -- --------------------------------------------------------
 
@@ -45,6 +43,24 @@ INSERT INTO `developpeurs` (`ID`, `pseudo`, `pass`, `droits`, `email`) VALUES
 (1, 'loubrie', 'loubriePass', 0, 'elian.loubrie@gmail.com'),
 (2, 'cheminade', 'cheminadePass', 0, 'cheminadedavid@gmail.com'),
 (3, 'lamoureux', 'lamoureuxPass', 0, 'virgil1534@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `gantt`
+--
+
+CREATE TABLE IF NOT EXISTS `gantt` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_developpeur` int(11) DEFAULT NULL,
+  `Jour` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ID_tache` int(11) DEFAULT NULL,
+  `ID_sprint` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ID_developpeur` (`ID_developpeur`),
+  KEY `ID_tache` (`ID_tache`),
+  KEY `ID_sprint` (`ID_sprint`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -146,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `us` (
   `lien_git` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`ID`),
   KEY `ID_sprint` (`ID_sprint`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=66 ;
 
 --
 -- Contenu de la table `us`
@@ -155,11 +171,24 @@ CREATE TABLE IF NOT EXISTS `us` (
 INSERT INTO `us` (`ID`, `titre`, `description`, `ID_sprint`, `cout`, `statut`, `date_debut`, `date_fin`, `date_test`, `code_test`, `description_test`, `lien_git`) VALUES
 (10, 'Test', 'qsdqsd', 3, 610, 2, '1225-02-25', '1992-11-02', '0000-00-00', 'sfd', 'sdfsdf', 'lien'),
 (11, 'Test2', 'desc2', 3, 55, 2, '1992-11-02', '1311-11-11', '0000-00-00', 'code', 'desc', 'lien'),
-(13, 'Test de us4', 'desc4', 2, 987, 2, '4222-11-11', '4222-11-11', '0000-00-00', 'code4', 'desc4', 'lien4');
+(13, 'Test de us4', 'desc4', 2, 987, 2, '4222-11-11', '4222-11-11', '0000-00-00', 'code4', 'desc4', 'lien4'),
+(27, 'ree', 'dedeD', 3, 1, 0, '0000-00-00', '0000-00-00', '0000-00-00', '$test = false', 'Test description v2', ''),
+(62, 'modify', 'de', 3, 1, 0, '0000-00-00', '0000-00-00', '0000-00-00', '', '', ''),
+(63, 'modify', 'toto', 3, 1, 0, '0000-00-00', '0000-00-00', '0000-00-00', '', '', ''),
+(64, 'toto', 'tata', 2, 1, 0, '1992-02-25', '1992-02-26', '0000-00-00', '$test = true', 'a test', 'https://lol?'),
+(65, 'TestTest', 'a test', 2, 1, 0, '0000-00-00', '0000-00-00', '0000-00-00', '$test = true', 'Test description', '');
 
 --
 -- Contraintes pour les tables exportées
 --
+
+--
+-- Contraintes pour la table `gantt`
+--
+ALTER TABLE `gantt`
+  ADD CONSTRAINT `gantt_tache` FOREIGN KEY (`ID_tache`) REFERENCES `taches` (`ID`),
+  ADD CONSTRAINT `gantt_developpeur` FOREIGN KEY (`ID_developpeur`) REFERENCES `developpeurs` (`ID`),
+  ADD CONSTRAINT `gantt_sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`);
 
 --
 -- Contraintes pour la table `taches`
