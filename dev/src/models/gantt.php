@@ -12,8 +12,8 @@
  * @author dechu
  */
 
-include ("sprint.php");
-include ("developer.php");
+include ("models/sprint.php");
+include ("models/developer.php");
 
 class ModelGantt {
     //put your code here
@@ -32,7 +32,7 @@ class ModelGantt {
     }
     
     public function _getDays($sprintID){
-         return $this->sprint->_getDays($sprintID);
+        return $this->sprint->_getDays($sprintID);
     }
     
     public function _setCurrentDay($id, $day){
