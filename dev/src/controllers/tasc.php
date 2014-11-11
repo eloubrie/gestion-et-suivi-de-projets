@@ -68,16 +68,6 @@ class ControllerTasc
 	
 	private function _buildTascListLine($line)
 	{
-		if($line['statut'] == 0)
-		{ $line['statut'] = '<span class="afaire">A faire</span>'; }
-		else if($line['statut'] == 1)
-		{ $line['statut'] = '<span class="encours">En cours</span>'; }
-		else
-		{ $line['statut'] = '<span class="termine">Terminé</span>'; }
-                
-                if($line['developpeur'] == 0)
-                { $line['developpeur'] = ''; }
-	
 		?>
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
