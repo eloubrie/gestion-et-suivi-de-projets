@@ -9,17 +9,17 @@ class ControllerGantt
 	public function __construct()
 	{
 		$this->modelGantt = new ModelGantt();
-                $this->idSprint = 0;
+                $this->idSprint = -1;
 	}
         
         public function _setSprint($idSprint){
             $this->idSprint = $idSprint;
         }
         
-        public function _buildSprintList($sprintID){
+        public function _buildSprintList(){
             echo "<option value=-1>-------</option>";
             foreach($this->modelGantt->_getSprintList() as $sprint){
-                if($sprintID == $sprint['ID']){?>
+                if($this->idSprint == $sprint['ID']){?>
                     <option value=<?php echo $sprint['ID'] ?> selected="selected"> Sprint N° <?php echo $sprint['numero_du_sprint']?></option>;
                 <?php }
                 else{

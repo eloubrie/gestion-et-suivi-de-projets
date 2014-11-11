@@ -6,15 +6,21 @@ include("controllers/gantt.php");
 $controllerGantt = new ControllerGantt(); 
 ?>
 
+<?php
+if(ISSET($_POST)){
+    $controllerGantt->_setSprint($_POST['sprintID']);
+}
+?>
+
 <form method="post" id="formSprintChoice" name="formSprintChoice" action='gantt.php'>
      <fieldset>
-        Sélection du sprint : <select name = sprintNumber> 
-            <?php if(ISSET($_POST)){$controllerGantt->_buildSprintList($_POST['sprintNumber']);}
-                  else{$controllerGantt->_buildSprintList(NULL);}?> </select>
+        Sélection du sprint : <select name = sprintID> 
+            <?php $controllerGantt->_buildSprintList() ?></select>
         <input type="submit" id="in" value="Valider"/>
      </fieldset>
  </form>
 <br/>
+
 <div class="row">
 	<section class="col-sm-12">
 		<div class="panel panel-primary">
