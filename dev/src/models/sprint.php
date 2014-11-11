@@ -12,6 +12,6 @@ class ModelSprint
 	}
         
         public function _getDays($sprintID){
-            return BDD::getConnection()->query("SELECT `duree` FROM `sprints` where ".'"'.$sprintID.'"');
+            return BDD::getConnection()->query("SELECT `duree` FROM `sprints` WHERE ID = ".'"'.$sprintID.'"');
         }
 }
