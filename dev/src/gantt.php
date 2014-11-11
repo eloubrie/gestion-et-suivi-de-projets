@@ -28,12 +28,8 @@ if(ISSET($_POST)){
 				<div class="panel-heading"> 
 					<h3 class="panel-title">Gantt</h3>
 				</div>
-				<thead>
-                                    <?php if(ISSET($_POST)) {/*$controllerGantt->_buildHeader();*/}?>
-				</thead>
-				<tbody>
-                                    <?php if(ISSET($_POST)) {/*$controllerGantt->_buildTable();*/}?>
-				</tbody>
+                                    <?php if(ISSET($_POST)) {$controllerGantt->_buildHeader();}?>
+                                    <?php if(ISSET($_POST)) {$controllerGantt->_buildTable();}?>
 			</table>
 		</div>
 	</section>

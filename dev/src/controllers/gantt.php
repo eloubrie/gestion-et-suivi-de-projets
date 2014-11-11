@@ -29,18 +29,23 @@ class ControllerGantt
         }
         
         public function _buildHeader(){
-            echo "<tr>";
-            $daysNb = $this->modelGantt->_getDays($this->idSprint);
-            echo 'DaysNb = '.$daysNb;
+            echo "<thead>";
+            $req = $this->modelGantt->_getDays($this->idSprint);
+            $daysNb = $req->fetch();
             $day = 1;
-            while($day <= $daysNb){
+            $dayC = $daysNb['duree'];
+            echo '<th></th>';
+            while($day<=$dayC){
                 echo '<th>J'.$day.'</th>';
+                $day+=1;
             }
-            echo "</tr>";
+            echo "</thead>";
         }
         
         public function _buildTable(){
-            echo "<th scope='row'>Error</th>";
+            echo '<tbody>';
+            echo '<th scope="row">Error</th>';
+            echo '</tbody>';
         }
 	
 	/*
