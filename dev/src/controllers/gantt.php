@@ -5,11 +5,13 @@ class ControllerGantt
 {
 	private $modelGantt;
         private $idSprint;
+        private $daysNb;
 
 	public function __construct()
 	{
 		$this->modelGantt = new ModelGantt();
                 $this->idSprint = -1;
+                $this->daysNb = -1;
 	}
         
         public function _setSprint($idSprint){
@@ -33,9 +35,9 @@ class ControllerGantt
             $req = $this->modelGantt->_getDays($this->idSprint);
             $daysNb = $req->fetch();
             $day = 1;
-            $dayC = $daysNb['duree'];
-            echo '<tr></th>';
-            while($day<=$dayC){
+            $this->daysNb = $daysNb['duree'];
+            echo '<th></th>';
+            while($day<=$this->daysNb){
                 echo '<th>J'.$day.'</th>';
                 $day+=1;
             }
@@ -46,7 +48,14 @@ class ControllerGantt
             echo '<tbody>';
             $dev_name = $this->modelGantt->_getDevelopersName();
             foreach ($dev_name as $name){
-                echo "<tr><th>".$name['pseudo']."</th></tr>";
+                echo "<tr>";
+                echo "<th scope='row'>".$name['pseudo']."</th>";
+                $cDay = 1;
+                while($cDay <= $this->daysNb){
+                    echo "<td>TODO</td>";
+                    $cDay+=1;
+                }
+                echo "</tr>";
             }
             echo '</tbody>';
         }
