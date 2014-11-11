@@ -29,22 +29,25 @@ class ControllerGantt
         }
         
         public function _buildHeader(){
-            echo "<thead>";
+            echo "<thead><tr>";
             $req = $this->modelGantt->_getDays($this->idSprint);
             $daysNb = $req->fetch();
             $day = 1;
             $dayC = $daysNb['duree'];
-            echo '<th></th>';
+            echo '<tr></th>';
             while($day<=$dayC){
                 echo '<th>J'.$day.'</th>';
                 $day+=1;
             }
-            echo "</thead>";
+            echo "</tr></thead>";
         }
         
         public function _buildTable(){
             echo '<tbody>';
-            echo '<th scope="row">Error</th>';
+            $dev_name = $this->modelGantt->_getDevelopersName();
+            foreach ($dev_name as $name){
+                echo "<tr><th>".$name['pseudo']."</th></tr>";
+            }
             echo '</tbody>';
         }
 	
