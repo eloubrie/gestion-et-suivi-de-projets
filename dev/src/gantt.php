@@ -8,7 +8,9 @@ $controllerGantt = new ControllerGantt();
 
 <form method="post" id="formSprintChoice" name="formSprintChoice" action='gantt.php'>
      <fieldset>
-        Sélection du sprint : <select name = sprintNumber> <?php $controllerGantt->_buildSprintList()?> </select>
+        Sélection du sprint : <select name = sprintNumber> 
+            <?php if(ISSET($_POST)){$controllerGantt->_buildSprintList($_POST['sprintNumber']);}
+                  else{$controllerGantt->_buildSprintList(NULL);}?> </select>
         <input type="submit" id="in" value="Valider"/>
      </fieldset>
  </form>

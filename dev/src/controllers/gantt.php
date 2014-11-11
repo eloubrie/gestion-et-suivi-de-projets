@@ -16,10 +16,15 @@ class ControllerGantt
             $this->idSprint = $idSprint;
         }
         
-        public function _buildSprintList(){
+        public function _buildSprintList($sprintID){
             echo "<option value=-1>-------</option>";
             foreach($this->modelGantt->_getSprintList() as $sprint){
-                echo "<option value=".$sprint['ID']."> Sprint N° ".$sprint['numero_du_sprint']."</option>";
+                if($sprintID == $sprint['ID']){?>
+                    <option value=<?php echo $sprint['ID'] ?> selected="selected"> Sprint N° <?php echo $sprint['numero_du_sprint']?></option>;
+                <?php }
+                else{
+                    echo "<option value=".$sprint['ID']."> Sprint N° ".$sprint['numero_du_sprint']."</option>";
+                }
             }
         }
         
