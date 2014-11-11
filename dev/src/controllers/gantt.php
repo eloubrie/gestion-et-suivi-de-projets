@@ -17,8 +17,9 @@ class ControllerGantt
         }
         
         public function _buildSprintList(){
+            echo "<option value=-1>-------</option>";
             foreach($this->modelGantt->_getSprintList() as $sprint){
-                echo "<option value=".$sprint['numero_du_sprint']."> Sprint N° ".$sprint['numero_du_sprint']."</option>";
+                echo "<option value=".$sprint['ID']."> Sprint N° ".$sprint['numero_du_sprint']."</option>";
             }
         }
         
