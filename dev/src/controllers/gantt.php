@@ -1,14 +1,41 @@
 <?php
-include("models/empty.php");
+include("models/gantt.php");
 
 class ControllerGantt
 {
-	private $model;
+	private $modelGantt;
+        private $idSprint;
 
 	public function __construct()
 	{
-		$this->model = new Model();
+		$this->modelGantt = new ModelGantt();
+                $this->idSprint = 0;
 	}
+        
+        public function _setSprint($idSprint){
+            $this->idSprint = $idSprint;
+        }
+        
+        public function _buildSprintList(){
+            foreach($this->modelGantt->_getSprintList() as $sprint){
+                echo "<option value=".$sprint['numero_du_sprint']."> Sprint N° ".$sprint['numero_du_sprint']."</option>";
+            }
+        }
+        
+        public function _buildHeader(){
+            echo "<tr>";
+            $daysNb = $this->modelGantt->_getDays($this->idSprint);
+            echo 'DaysNb = '.$daysNb;
+            $day = 1;
+            while($day <= $daysNb){
+                echo '<th>J'.$day.'</th>';
+            }
+            echo "</tr>";
+        }
+        
+        public function _buildTable(){
+            echo "<th scope='row'>Error</th>";
+        }
 	
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
