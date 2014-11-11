@@ -14,17 +14,25 @@
 
 include ("models/sprint.php");
 include ("models/developer.php");
+include ("models/tasc.php");
 
 class ModelGantt {
     //put your code here
     
+    // Foreign keys in gantt table
     private $developer;
     private $sprint;
+    private $tasc;
     
     public function __construct()
     {
         $this->sprint = new ModelSprint();
         $this->developer = new ModelDeveloper();
+        $this->tasc = new ModelTasc();
+    }
+    
+    public function _getSprintList(){
+        return $this->sprint->_getSprintList();
     }
     
     public function _getDevelopersName(){
