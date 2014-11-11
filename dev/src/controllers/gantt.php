@@ -1,14 +1,64 @@
 <?php
-include("models/empty.php");
+include("models/gantt.php");
 
 class ControllerGantt
 {
-	private $model;
+	private $modelGantt;
+        private $idSprint;
+        private $daysNb;
 
 	public function __construct()
 	{
-		$this->model = new Model();
+		$this->modelGantt = new ModelGantt();
+                $this->idSprint = -1;
+                $this->daysNb = -1;
 	}
+        
+        public function _setSprint($idSprint){
+            $this->idSprint = $idSprint;
+        }
+        
+        public function _buildSprintList(){
+            echo "<option value=-1>-------</option>";
+            foreach($this->modelGantt->_getSprintList() as $sprint){
+                if($this->idSprint == $sprint['ID']){?>
+                    <option value=<?php echo $sprint['ID'] ?> selected="selected"> Sprint N° <?php echo $sprint['numero_du_sprint']?></option>;
+                <?php }
+                else{
+                    echo "<option value=".$sprint['ID']."> Sprint N° ".$sprint['numero_du_sprint']."</option>";
+                }
+            }
+        }
+        
+        public function _buildHeader(){
+            echo "<thead><tr>";
+            $req = $this->modelGantt->_getDays($this->idSprint);
+            $daysNb = $req->fetch();
+            $day = 1;
+            $this->daysNb = $daysNb['duree'];
+            echo '<th></th>';
+            while($day<=$this->daysNb){
+                echo '<th>J'.$day.'</th>';
+                $day+=1;
+            }
+            echo "</tr></thead>";
+        }
+        
+        public function _buildTable(){
+            echo '<tbody>';
+            $dev_name = $this->modelGantt->_getDevelopersName();
+            foreach ($dev_name as $name){
+                echo "<tr>";
+                echo "<th scope='row'>".$name['pseudo']."</th>";
+                $cDay = 1;
+                while($cDay <= $this->daysNb){
+                    echo "<td>TODO</td>";
+                    $cDay+=1;
+                }
+                echo "</tr>";
+            }
+            echo '</tbody>';
+        }
 	
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
