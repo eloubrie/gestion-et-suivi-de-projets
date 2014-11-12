@@ -30,7 +30,21 @@ class ControllerGantt
             }
         }
         
+        public function _initGanttModel($dev,$day){
+            $this->modelGantt->_deleteBySprint($this->idSprint);
+            $develops = $this->modelGantt->_getDevelopers();
+            $tasc="NULL";
+            foreach ($develops as $name){
+                $cDay = 1;
+                while($cDay <= $this->daysNb){
+                    $this->modelGantt->_insertGantt($name['ID'], $cDay, $tasc, $this->idSprint);
+                    $cDay+=1;
+                }
+            }
+        }
+        
         public function _buildHeader(){
+            //$this->_initGanttModel(1, 1);
             echo "<thead><tr>";
             $req = $this->modelGantt->_getDays($this->idSprint);
             $daysNb = $req->fetch();
@@ -46,20 +60,31 @@ class ControllerGantt
         
         public function _buildTable(){
             echo '<tbody>';
-            $dev_name = $this->modelGantt->_getDevelopersName();
+            $dev_name = $this->modelGantt->_getDevelopers();
             foreach ($dev_name as $name){
                 echo "<tr>";
                 echo "<th scope='row'>".$name['pseudo']."</th>";
                 $cDay = 1;
                 while($cDay <= $this->daysNb){
-                    echo "<td>TODO</td>";
+                    $this->_buildCell($name['ID'], $cDay);
                     $cDay+=1;
                 }
                 echo "</tr>";
             }
             echo '</tbody>';
         }
-	
+        
+        protected function _buildCell($dev,$day){
+            $this->_setupTasc();
+        }
+        
+        protected function _setupTasc(){
+            
+            /*echo "<select name=tasc>";
+            ?><option value=<?php echo $sprint['ID'] ?> selected="selected"> Sprint N° <?php echo $sprint['numero_du_sprint']?></option>;
+            <?php
+            echo "</select>";*/
+        }
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
 	L'attribut "modele" permet d'accéder aux données de la BDD grâce à des appels comme : $this->modele->getAllUS()

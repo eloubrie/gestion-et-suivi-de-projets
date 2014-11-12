@@ -35,8 +35,8 @@ class ModelGantt {
         return $this->sprint->_getSprintList();
     }
     
-    public function _getDevelopersName(){
-        return $this->developer->_getDevelopersName();
+    public function _getDevelopers(){
+        return $this->developer->_getDevelopers();
     }
     
     public function _getDays($sprintID){
@@ -45,5 +45,13 @@ class ModelGantt {
     
     public function _setCurrentDay($id, $day){
         return BDD::getConnection()->query("UPDATE gantt SET `Jour`='".mysql_real_escape_string ($day)."'WHERE ID = ".$id);
+    }
+    
+    public function _insertGantt($devID, $day, $tascID, $sprintID){
+        return BDD::getConnection()->query("INSERT INTO `gantt` VALUES (0,$devID,$day,$tascID,$sprintID)");
+    }
+    
+    public function _deleteBySprint($sprintID){
+        return BDD::getConnection()->query("DELETE FROM `gantt` WHERE ID_sprint = $sprintID");;
     }
 }
