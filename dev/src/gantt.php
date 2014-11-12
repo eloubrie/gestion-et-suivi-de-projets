@@ -25,7 +25,7 @@ if(ISSET($_GET['refreshSprint'])){
      </fieldset>
 </form> 
 <br/>
-<a href="gantt.php?refreshSprint=<?php echo $controllerGantt->_getSprint() ?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Vider Gantt du Sprint</a>
+<a href="gantt.php?refreshSprint=<?php echo $controllerGantt->_getSprint() ?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Refresh Gantt du Sprint</a>
 <br/>
 <br/>
 
@@ -42,5 +42,8 @@ if(ISSET($_GET['refreshSprint'])){
 		</div>
 	</section>
 </div>
+
+<a href="" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> TODO : Validation</a>
+
 <?php include("structure/bottom_page.php"); ?>					
 						

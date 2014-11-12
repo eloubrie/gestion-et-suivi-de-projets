@@ -54,4 +54,8 @@ class ModelGantt {
     public function _deleteBySprint($sprintID){
         return BDD::getConnection()->query("DELETE FROM `gantt` WHERE ID_sprint = $sprintID");;
     }
+    
+    public function _getAllTascs(){
+        return $this->tasc->_getAllTascs();
+    }
 }

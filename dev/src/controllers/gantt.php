@@ -73,7 +73,7 @@ class ControllerGantt
                 echo "<th scope='row'>".$name['pseudo']."</th>";
                 $cDay = 1;
                 while($cDay <= $this->daysNb){
-                    $this->_buildCell($name['ID'], $cDay);
+                    $this->_buildCell();
                     $cDay+=1;
                 }
                 echo "</tr>";
@@ -81,16 +81,20 @@ class ControllerGantt
             echo '</tbody>';
         }
         
-        protected function _buildCell($dev,$day){
+        protected function _buildCell(){
+            echo "<td>";
             $this->_setupTasc();
+            echo "</td>";
         }
         
         protected function _setupTasc(){
-            
-            /*echo "<select name=tasc>";
-            ?><option value=<?php echo $sprint['ID'] ?> selected="selected"> Sprint N° <?php echo $sprint['numero_du_sprint']?></option>;
+            $tascs = $this->modelGantt->_getAllTascs();
+            echo "<select name=tasc>";
+            foreach($tascs as $tasc){
+                 ?><option value=<?php echo $tasc['ID'] ?>> T<?php echo $tasc['ID']?></option>;
             <?php
-            echo "</select>";*/
+            }
+            echo "</select>";
         }
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
