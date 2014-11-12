@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le: Mar 11 Novembre 2014 à 16:16
--- Version du serveur: 5.6.12-log
--- Version de PHP: 5.4.16
+-- Client :  127.0.0.1
+-- Généré le :  Mer 12 Novembre 2014 à 13:47
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,10 +17,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `cdp`
+-- Base de données :  `cdp`
 --
-CREATE DATABASE IF NOT EXISTS `cdp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cdp`;
 
 -- --------------------------------------------------------
 
@@ -214,21 +212,21 @@ INSERT INTO `us` (`ID`, `titre`, `description`, `ID_sprint`, `cout`, `statut`, `
 -- Contraintes pour la table `gantt`
 --
 ALTER TABLE `gantt`
-  ADD CONSTRAINT `gantt_tache` FOREIGN KEY (`ID_tache`) REFERENCES `taches` (`ID`),
-  ADD CONSTRAINT `gantt_developpeur` FOREIGN KEY (`ID_developpeur`) REFERENCES `developpeurs` (`ID`),
-  ADD CONSTRAINT `gantt_sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`);
+  ADD CONSTRAINT `gantt_sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `gantt_developpeur` FOREIGN KEY (`ID_developpeur`) REFERENCES `developpeurs` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `gantt_tache` FOREIGN KEY (`ID_tache`) REFERENCES `taches` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `taches`
 --
 ALTER TABLE `taches`
-  ADD CONSTRAINT `us` FOREIGN KEY (`ID_US`) REFERENCES `us` (`ID`);
+  ADD CONSTRAINT `us` FOREIGN KEY (`ID_US`) REFERENCES `us` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `us`
 --
 ALTER TABLE `us`
-  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`);
+  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
