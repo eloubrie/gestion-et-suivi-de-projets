@@ -16,6 +16,17 @@ class ControllerGantt
         
         public function _setSprint($idSprint){
             $this->idSprint = $idSprint;
+            $this->findSprintDays();
+        }
+        
+        protected function findSprintDays(){
+            $req = $this->modelGantt->_getDays($this->idSprint);
+            $daysNb = $req->fetch();
+            $this->daysNb = $daysNb['duree'];
+        }
+        
+        public function _getSprint(){
+            return $this->idSprint;
         }
         
         public function _buildSprintList(){
@@ -30,7 +41,7 @@ class ControllerGantt
             }
         }
         
-        public function _initGanttModel($dev,$day){
+        public function _initGanttModel(){
             $this->modelGantt->_deleteBySprint($this->idSprint);
             $develops = $this->modelGantt->_getDevelopers();
             $tasc="NULL";
@@ -44,12 +55,8 @@ class ControllerGantt
         }
         
         public function _buildHeader(){
-            //$this->_initGanttModel(1, 1);
             echo "<thead><tr>";
-            $req = $this->modelGantt->_getDays($this->idSprint);
-            $daysNb = $req->fetch();
             $day = 1;
-            $this->daysNb = $daysNb['duree'];
             echo '<th></th>';
             while($day<=$this->daysNb){
                 echo '<th>J'.$day.'</th>';

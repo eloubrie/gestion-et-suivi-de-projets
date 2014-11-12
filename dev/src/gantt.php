@@ -7,8 +7,13 @@ $controllerGantt = new ControllerGantt();
 ?>
 
 <?php
-if(ISSET($_POST)){
+if(ISSET($_POST['sprintID'])){
     $controllerGantt->_setSprint($_POST['sprintID']);
+}
+
+if(ISSET($_GET['refreshSprint'])){
+    $controllerGantt->_setSprint($_GET['refreshSprint']);
+    $controllerGantt->_initGanttModel();
 }
 ?>
 
@@ -18,7 +23,10 @@ if(ISSET($_POST)){
             <?php $controllerGantt->_buildSprintList() ?></select>
         <input type="submit" id="in" value="Valider"/>
      </fieldset>
- </form>
+</form> 
+<br/>
+<a href="gantt.php?refreshSprint=<?php echo $controllerGantt->_getSprint() ?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Vider Gantt du Sprint</a>
+<br/>
 <br/>
 
 <div class="row">
@@ -28,8 +36,8 @@ if(ISSET($_POST)){
 				<div class="panel-heading"> 
 					<h3 class="panel-title">Gantt</h3>
 				</div>
-                                    <?php if(ISSET($_POST)) {$controllerGantt->_buildHeader();}?>
-                                    <?php if(ISSET($_POST)) {$controllerGantt->_buildTable();}?>
+                                    <?php $controllerGantt->_buildHeader();?>
+                                    <?php $controllerGantt->_buildTable();?>
 			</table>
 		</div>
 	</section>
