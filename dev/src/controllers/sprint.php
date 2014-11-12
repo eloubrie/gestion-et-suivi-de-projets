@@ -15,6 +15,11 @@ class ControllerSprint
 		return $this->modelSprint->_getSprintList();
 	}
         
+        public function _getSprint($id)
+	{
+		return $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
+	}
+        
         public function _buildSprintList()
 	{
 		foreach($this->modelSprint->_getSprintList() as $sprint)
@@ -36,8 +41,8 @@ class ControllerSprint
 			<td><?php echo $line['date_fin']; ?></td>
 			<td><?php echo $line['cout_valide']; ?></td>
 			<td>
-				<a href="#" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
-				<a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+				<a href="manage_sprint.php?modif_sprint=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
+				<a href="manage_sprint.php?action=suppr&sprint_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 			</td>
 		</tr>
 		<?php
@@ -58,5 +63,20 @@ class ControllerSprint
 		<p><b>Coût validé :</b> <?php echo $sprint['cout_valide']; ?></p>
 		<br />
 		<?php
+	}
+        
+        public function _insertSprint($number, $cost, $startDate, $duration, $endDate, $title, $description)
+	{
+		$this->modelSprint->_insertSprint($number, $cost, $startDate, $duration, $endDate, $title, $description);
+	}
+        
+        public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost)
+	{
+		$this->modelSprint->_modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost);
+	}
+        
+        public function _supprSprint($ID)
+	{
+		$this->modelSprint->_supprSprint($ID);
 	}
 }

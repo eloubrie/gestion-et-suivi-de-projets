@@ -6,7 +6,7 @@ include("controllers/sprint.php");
 $controllerSprint = new ControllerSprint(); 
 ?>
 
-<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer un nouveau sprint</a>
+<a href="manage_sprint.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer un nouveau sprint</a>
 <br /><br />
 
 <div class="row">
