@@ -16,12 +16,29 @@ class ControllerGantt
                 $this->selectTag = "tasc";
 	}
         
-        public function _setSprint($idSprint){
-            $this->idSprint = $idSprint;
-            $this->findSprintDays();
+        public function _receiveArray($arrayTasc){
+            foreach ($arrayTasc as $cle=>$tasc) {
+                $parts = explode('_', $cle);
+                if($parts[0] === $this->selectTag){
+                   $this->modelGantt->_updateTasc($tasc, $parts[1], $parts[2], $this->idSprint);
+                }
+            }
         }
         
-        protected function findSprintDays(){
+        public function _getSelectTag(){
+            return $this->selectTag;
+        }
+        
+        public function _getDays(){
+            return $this->daysNb;
+        }
+        
+        public function _setSprint($idSprint){
+            $this->idSprint = $idSprint;
+            $this->_findSprintDays();
+        }
+        
+        protected function _findSprintDays(){
             $req = $this->modelGantt->_getDays($this->idSprint);
             $daysNb = $req->fetch();
             $this->daysNb = $daysNb['duree'];
@@ -75,7 +92,7 @@ class ControllerGantt
                 echo "<th scope='row'>".$name['pseudo']."</th>";
                 $cDay = 1;
                 while($cDay <= $this->daysNb){
-                    $this->_buildCell($cDay);
+                    $this->_buildCell($name['ID'], $cDay);
                     $cDay+=1;
                 }
                 echo "</tr>";
@@ -83,21 +100,36 @@ class ControllerGantt
             echo '</tbody>';
         }
         
-        protected function _buildCell($cDay){
+        protected function _buildCell($dev_name, $cDay){
             echo "<td>";
-            $this->_setupTasc($cDay);
+            $this->_setupTasc($dev_name, $cDay);
             echo "</td>";
         }
         
-        protected function _setupTasc($cDay){
-            $selectID = $this->selectTag.$cDay;
+        protected function _setupTasc($dev_name, $cDay){
+            $selectID = $this->selectTag."_".$dev_name."_".$cDay;
             $tascs = $this->modelGantt->_getAllTascs();
-            echo "<select name=$selectID>";
-            foreach($tascs as $tasc){
-                 ?><option value=<?php echo $tasc['ID'] ?>> T<?php echo $tasc['ID']?></option>;
+            ?><select name="<?php echo $selectID?>"> 
             <?php
+            foreach($tascs as $tasc){
+                $tascArray = $this->modelGantt->_getTasc($dev_name,$cDay,$this->idSprint);
+                foreach ($tascArray as $tascmp) {
+                    if($tascmp['ID_tache'] === $tasc['ID']){
+                        ?><option value="<?php echo $tasc['ID'] ?>" selected="selected"> T<?php echo $tasc['ID']?></option>
+                    <?php
+                    }   
+                    else{
+                        ?><option value="<?php echo $tasc['ID'] ?>"> T<?php echo $tasc['ID']?></option>
+                    <?php
+                    }
+                    break; //TODO : MultiTask
+                }
+                
+                
             }
-            echo "</select>";
+            ?></select>
+            <?php
+            
         }
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
