@@ -6,12 +6,14 @@ class ControllerGantt
 	private $modelGantt;
         private $idSprint;
         private $daysNb;
+        private $selectTag;
 
 	public function __construct()
 	{
 		$this->modelGantt = new ModelGantt();
                 $this->idSprint = -1;
                 $this->daysNb = -1;
+                $this->selectTag = "tasc";
 	}
         
         public function _setSprint($idSprint){
@@ -73,7 +75,7 @@ class ControllerGantt
                 echo "<th scope='row'>".$name['pseudo']."</th>";
                 $cDay = 1;
                 while($cDay <= $this->daysNb){
-                    $this->_buildCell();
+                    $this->_buildCell($cDay);
                     $cDay+=1;
                 }
                 echo "</tr>";
@@ -81,15 +83,16 @@ class ControllerGantt
             echo '</tbody>';
         }
         
-        protected function _buildCell(){
+        protected function _buildCell($cDay){
             echo "<td>";
-            $this->_setupTasc();
+            $this->_setupTasc($cDay);
             echo "</td>";
         }
         
-        protected function _setupTasc(){
+        protected function _setupTasc($cDay){
+            $selectID = $this->selectTag.$cDay;
             $tascs = $this->modelGantt->_getAllTascs();
-            echo "<select name=tasc>";
+            echo "<select name=$selectID>";
             foreach($tascs as $tasc){
                  ?><option value=<?php echo $tasc['ID'] ?>> T<?php echo $tasc['ID']?></option>;
             <?php
