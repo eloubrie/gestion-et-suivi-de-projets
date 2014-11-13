@@ -2,7 +2,7 @@
 include("bdd/bdd.php");
 include("controllers/tasc.php");
 include("controllers/us.php");
-include("controllers/developer.php");
+include_once 'controllers/developer.php';
 $controllerTasc = new ControllerTasc();
 $controllerUs = new ControllerUs();
 $controllerDeveloper = new ControllerDeveloper();
