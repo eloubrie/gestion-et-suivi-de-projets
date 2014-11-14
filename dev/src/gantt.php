@@ -22,9 +22,9 @@ if(ISSET($_GET['refreshSprint'])){
      <fieldset>
         Sélection du sprint : <select name = sprintID> 
             <?php $controllerGantt->_buildSprintList() ?></select>
-        <input type="submit" id="in" value="Valider"/>
+         <button id="submit" name="submit" class="btn btn-primary"><span class="glyphicon glyphicon-download"> Importer</span></button>
         <br/>
-        <a href="gantt.php?refreshSprint=<?php echo $controllerGantt->_getSprint() ?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Refresh Gantt du Sprint</a>
+        <a href="gantt.php?refreshSprint=<?php echo $controllerGantt->_getSprint() ?>" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-refresh"></span> Nettoyer le Gantt</a>
         <br/>
         <br/>
         <div class="row">
@@ -40,7 +40,7 @@ if(ISSET($_GET['refreshSprint'])){
 		</div>
             </section>
         </div>
-        <input type="submit" id="in" value="Update"/>
+        <button id="submit" name="submit" class="btn btn-primary btn-success"> <span class="glyphicon glyphicon-ok"> Valider</span></button>
     </fieldset>
 </form> 
 
