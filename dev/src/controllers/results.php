@@ -51,8 +51,12 @@ class ControllerResults
             //$this->_buildBDCSprint($sprintName, $arrayExpected, $arrayRealize)
         }
         
-        //TODO David
-        protected function _buildBDCSprint($sprintName, $arrayExpected, $arrayRealize){
+        protected function _buildBDCSprint($sprintName, $arrayDays, $arrayExpected, $arrayRealize){
+            $BDC_all = new PHPlot(800,600);              
+            $BDC_all->SetTitle("Burn Down Chart : ".$sprintName);
+            $BDC_all->SetXTitle('Durée');
+            $BDC_all->SetYTitle('Points restants');
+            $this->_drawShape($BDC_all, $arrayDays, $arrayExpected, $arrayRealize);
             
         }       
         
@@ -61,17 +65,20 @@ class ControllerResults
             $BDC_all->SetTitle("Burn Down Chart");
             $BDC_all->SetXTitle('Sprints');
             $BDC_all->SetYTitle('Points restants');
-            $arrayPlot = new ArrayObject();
-            for($i=0;$i<$arraySprint->count();$i+=1)
-            {
-                $arrayPlot->append(array($arraySprint[$i], $arrayExpected[$i], $arrayRealize[$i]));
-            }
-            $BDC_all->SetDataColors(array('orange', 'green'));
-            $BDC_all->SetLegend(array('Theorique', 'Valide'));
-            $BDC_all->SetDataValues($arrayPlot);
-            $BDC_all->DrawGraph();
+            $this->_drawShape($BDC_all, $arraySprint, $arrayExpected, $arrayRealize);
         }
 
+        protected function _drawShape($plot, $xData, $yData1, $yData2){
+            $arrayPlot = new ArrayObject();
+            for($i=0;$i<$xData->count();$i+=1)
+            {
+                $arrayPlot->append(array($xData[$i], $yData1[$i], $yData2[$i]));
+            }
+            $plot->SetDataColors(array('orange', 'green'));
+            $plot->SetLegend(array('Theorique', 'Valide'));
+            $plot->SetDataValues($arrayPlot);
+            $plot->DrawGraph();
+        }
 	
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
