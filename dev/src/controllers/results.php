@@ -52,7 +52,7 @@ class ControllerResults
         }
         
         protected function _buildBDCSprint($sprintName, $arrayDays, $arrayExpected, $arrayRealize){
-            $BDC_all = new PHPlot(800,600);              
+            $BDC_all = new PHPlot(400,300);              
             $BDC_all->SetTitle("Burn Down Chart : ".$sprintName);
             $BDC_all->SetXTitle('Durée');
             $BDC_all->SetYTitle('Points restants');
