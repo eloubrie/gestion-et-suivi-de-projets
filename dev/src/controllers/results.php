@@ -1,5 +1,6 @@
 <?php
 include("models/empty.php");
+include('phplot/phplot.php');
 
 class ControllerResults
 {
@@ -8,7 +9,69 @@ class ControllerResults
 	public function __construct()
 	{
 		$this->model = new Model();
-	}
+        }
+        
+        protected function _exampleDraw(){
+            //Prepare DATA
+            $array1 = new ArrayObject();
+            $array1->append(20);
+            $array1->append(15);
+            $array1->append(12);
+            $array1->append(10);
+            $array1->append(5);
+            $array1->append(1);
+
+            $array2 = new ArrayObject();
+            $array2->append(20);
+            $array2->append(18);
+            $array2->append(14);
+            $array2->append(12);
+            $array2->append(6);
+            $array2->append(0);
+
+            $arraySprint = new ArrayObject();
+            $arraySprint->append(0);
+            $arraySprint->append(1);
+            $arraySprint->append(2);
+            $arraySprint->append(3);
+            $arraySprint->append(4);
+            $arraySprint->append(5);
+            
+            $this->_buildBDCAll($arraySprint, $array1, $array2);
+        }
+        
+        //TODO David
+        public function _drawBDC(){
+            //$this->_buildBDCAll($arraySprint, $array1, $array2);
+            $this->_exampleDraw();
+        }
+        
+        //TODO David
+        public function _drawASprintBDC($sprintID){
+            //$this->_buildBDCSprint($sprintName, $arrayExpected, $arrayRealize)
+        }
+        
+        //TODO David
+        protected function _buildBDCSprint($sprintName, $arrayExpected, $arrayRealize){
+            
+        }       
+        
+        protected function _buildBDCAll($arraySprint, $arrayExpected, $arrayRealize){
+            $BDC_all = new PHPlot(800,600);              
+            $BDC_all->SetTitle("Burn Down Chart");
+            $BDC_all->SetXTitle('Sprints');
+            $BDC_all->SetYTitle('Points restants');
+            $arrayPlot = new ArrayObject();
+            for($i=0;$i<$arraySprint->count();$i+=1)
+            {
+                $arrayPlot->append(array($arraySprint[$i], $arrayExpected[$i], $arrayRealize[$i]));
+            }
+            $BDC_all->SetDataColors(array('orange', 'green'));
+            $BDC_all->SetLegend(array('Theorique', 'Valide'));
+            $BDC_all->SetDataValues($arrayPlot);
+            $BDC_all->DrawGraph();
+        }
+
 	
 	/*
 	Implémenter ici les méthodes permettant de générer des morceaux de code html.
