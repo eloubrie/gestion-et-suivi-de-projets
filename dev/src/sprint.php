@@ -40,9 +40,10 @@ $controllerSprint->_buildSprintInfo($_GET['ID']);
 			</table>
 		</div>
 	</section>
-</div>
+</div><br />
 
-<a href="associate_us?sprint=<?php echo $_GET['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span>  Associer une nouvelle US</a>
+<h3>Burn Down Chart</h3>
+<img src="imageBDC.php?sprint=<?php echo $_GET['ID']; ?>" /> 
 
 <?php include("structure/bottom_page.php"); ?>					
 						

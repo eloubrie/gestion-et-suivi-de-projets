@@ -5,6 +5,7 @@ include("structure/top_page.php");
 include("controllers/results.php");
 $controllerResults = new ControllerResults(); 
 ?>
-<img src="c_resultsBDC.php" border = 5 width='800' heigth="600"> 
+<h3>Burn down Chart du projet</h3>
+<img src="imageBDC.php?sprint=0" /> 
 <?php include("structure/bottom_page.php"); ?>					
 						
