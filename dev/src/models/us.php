@@ -1,7 +1,15 @@
 <?php
+include ("models/sprint.php");
+
 class ModelUs
 {
-	public function _getBacklog()
+        private $sprintModel;
+        
+        public function __construct(){
+            $this->sprintModel = new ModelSprint();
+        }
+
+        public function _getBacklog()
 	{
 		return BDD::getConnection()->query('SELECT * FROM us');
 	}
@@ -51,4 +59,8 @@ class ModelUs
 	{
 		BDD::getConnection()->query("DELETE FROM us WHERE ID=".$ID);
 	}
+        
+        public function _clearSprintCost($sprintID){
+            
+        }
 }

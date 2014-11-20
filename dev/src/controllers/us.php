@@ -96,8 +96,16 @@ class ControllerUs
 		$this->modelUs->_modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
 	}
 	
-		public function _supprUs($ID)
+	public function _supprUs($ID)
 	{
 		$this->modelUs->_supprUs($ID);
 	}
+        
+        public function _cleanSprintCost(){
+            
+        }
+        
+        public function _updateSprintCost($ID){
+            
+        }
 }
