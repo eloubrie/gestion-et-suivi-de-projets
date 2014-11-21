@@ -67,6 +67,9 @@ class ControllerUs
 			</td>
 		</tr>
 		<?php
+                
+                $this->_cleanSprintCost();
+                $this->_updateSprints();
 	}		
 	
 	public function _buildUsInfo($id)
@@ -86,6 +89,9 @@ class ControllerUs
 		<p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
 		<br />
 		<?php
+                
+                $this->_cleanSprintCost();
+                $this->_updateSprints();
 	}
 	
 	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
@@ -103,14 +109,29 @@ class ControllerUs
 		$this->modelUs->_supprUs($ID);
 	}
         
-        public function _cleanSprintCost(){
+        protected function _cleanSprintCost(){
             $backLog = $this->modelUs->_getBacklog();
             foreach($backLog as $us){
                 $this->modelUs->_clearSprintCost[$us['ID_sprint']];
             }
         }
         
-        public function _updateSprintCost($ID){
-            
+        protected function _updateSprints(){
+            $sprintList = $this->modelUs->_getSprintList();
+            foreach($sprintList as $sprint){
+                $cost = 0;
+                $validate = 0;
+                $backLog = $this->modelUs->_getBacklog();
+                foreach($backLog as $us){
+                    if($us['ID_sprint'] == $sprint['ID']){
+                        $cost+=$us['cout'];
+                        if($us['statut'] >= 2){
+                            $validate+=$us['cout'];
+                        }
+                    }
+                }
+                $this->modelUs->_updateSprintTotalCost($sprint['ID'], $cost);
+                $this->modelUs->_updateSprintValidateCost($sprint['ID'], $validate);
+            }
         }
 }

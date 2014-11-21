@@ -53,4 +53,16 @@ class ModelSprint
         public function _getSprintNumberByID($sprintID){
             return BDD::getConnection()->query("SELECT `numero_du_sprint` FROM `sprints` WHERE `ID`=$sprintID");
         }
+        
+        public function _clearSprintCost($sprintID){
+            return BDD::getConnection()->query("UPDATE `sprints` SET `cout`=0,`cout_valide`=0 WHERE `ID`=$sprintID");
+        }
+        
+        public function _updateSprintTotalCost($sprintID, $cost){
+            return BDD::getConnection()->query("UPDATE `sprints` SET `cout`=$cost WHERE `ID`=$sprintID");
+        }
+        
+        public function _updateSprintValidateCost($sprintID, $cost){
+            return BDD::getConnection()->query("UPDATE `sprints` SET `cout_valide`=$cost WHERE `ID`=$sprintID");            
+        }
 }
