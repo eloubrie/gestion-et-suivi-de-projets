@@ -63,4 +63,8 @@ class ModelUs
         public function _clearSprintCost($sprintID){
             
         }
+        
+        public function _getSprintNumberByID($sprintID){
+            return $this->sprintModel->_getSprintNumberByID($sprintID);
+        }
 }

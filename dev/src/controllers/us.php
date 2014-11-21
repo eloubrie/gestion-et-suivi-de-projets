@@ -50,11 +50,12 @@ class ControllerUs
 	
 	private function _buildBaclogLine($line)
 	{	
+                $numSprint= $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
 		?>
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
 			<td><a href="us.php?ID=<?php echo $line['ID']; ?>"><?php echo $line['titre']; ?></a></td>
-			<td><?php echo $line['ID_sprint']; ?></td>
+                        <td><?php echo $numSprint['numero_du_sprint']; ?></td>
 			<td><?php echo $line['cout']; ?></td>
 			<td><?php echo $line['date_debut']; ?></td>
 			<td><?php echo $line['date_fin']; ?></td>
@@ -70,12 +71,13 @@ class ControllerUs
 	
 	public function _buildUsInfo($id)
 	{
+                $numSprint= $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
 		$us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
 		
 		?>
 		<h3><?php echo $us['titre']; ?> (US numéro <?php echo $us['ID']; ?>)</h3><br />
 		<p><b>Description :</b> <?php echo $us['description']; ?></p>
-		<p><b>Sprint :</b> <?php echo $us['ID_sprint']; ?></p>
+		<p><b>Sprint :</b> <?php echo $numSprint['numero_du_sprint']; ?></p>
 		<p><b>Coût :</b> <?php echo $us['cout']; ?></p>
 		<p><b>Statut :</b> <?php echo $this->_UsStatus($us['statut']); ?></p>
 		<p><b>Date début :</b> <?php echo $us['date_debut']; ?></p>
@@ -102,7 +104,10 @@ class ControllerUs
 	}
         
         public function _cleanSprintCost(){
-            
+            $backLog = $this->modelUs->_getBacklog();
+            foreach($backLog as $us){
+                $this->modelUs->_clearSprintCost[$us['ID_sprint']];
+            }
         }
         
         public function _updateSprintCost($ID){

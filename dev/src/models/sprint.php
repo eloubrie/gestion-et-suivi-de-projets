@@ -49,4 +49,8 @@ class ModelSprint
 	{
 		BDD::getConnection()->query("DELETE FROM sprints WHERE ID=".$ID);
 	}
+        
+        public function _getSprintNumberByID($sprintID){
+            return BDD::getConnection()->query("SELECT `numero_du_sprint` FROM `sprints` WHERE `ID`=$sprintID");
+        }
 }
