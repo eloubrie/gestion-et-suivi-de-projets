@@ -74,9 +74,9 @@ class ControllerUs
 	
 	public function _buildUsInfo($id)
 	{
-                $numSprint= $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
 		$us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
-		
+		$numSprint= $this->modelUs->_getSprintNumberByID($us['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
+
 		?>
 		<h3><?php echo $us['titre']; ?> (US numéro <?php echo $us['ID']; ?>)</h3><br />
 		<p><b>Description :</b> <?php echo $us['description']; ?></p>
