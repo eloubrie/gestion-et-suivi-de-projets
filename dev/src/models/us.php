@@ -1,15 +1,7 @@
 <?php
-//include ("models/sprint.php");
-
 class ModelUs
 {
-        //private $sprintModel;
-        
-        public function __construct(){
-            //$this->sprintModel = new ModelSprint();
-        }
-
-        public function _getBacklog()
+	public function _getBacklog()
 	{
 		return BDD::getConnection()->query('SELECT * FROM us');
 	}
@@ -24,7 +16,7 @@ class ModelUs
 		return BDD::getConnection()->query('SELECT * FROM us WHERE ID_Sprint = '.$id);
 	}
         
-	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest)
 	{
 		BDD::getConnection()->query("INSERT INTO us VALUES (0,'".
 		mysql_real_escape_string ($title)."','".
@@ -35,8 +27,7 @@ class ModelUs
 		mysql_real_escape_string ($datebegin)."','".
 		mysql_real_escape_string ($dateend)."','0000-00-00','".
 		mysql_real_escape_string ($codetest)."','".
-		mysql_real_escape_string ($descriptiontest)."','".
-		mysql_real_escape_string ($linkgit)."')");
+		mysql_real_escape_string ($descriptiontest)."','NULL')");
 	}
 	
 	public function _modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
@@ -59,24 +50,4 @@ class ModelUs
 	{
 		BDD::getConnection()->query("DELETE FROM us WHERE ID=".$ID);
 	}
-        
-        public function _clearSprintCost($sprintID){
-            return BDD::getConnection()->query("UPDATE `sprints` SET `cout`=0,`cout_valide`=0 INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` WHERE `ID`=$sprintID");
-        }
-        
-        public function _getSprintNumberByID($sprintID){
-            return BDD::getConnection()->query("SELECT `numero_du_sprint` FROM `sprints` INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` WHERE `ID_sprint`=$sprintID");
-        }
-        
-        public function _updateSprintTotalCost($sprintID, $cost){
-            return BDD::getConnection()->query("UPDATE `sprints` SET `cout`=$cost INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` WHERE `ID`=$sprintID");
-        }
-        
-        public function _updateSprintValidateCost($sprintID, $cost){
-            return BDD::getConnection()->query("UPDATE `sprints` SET `cout_valide`=$cost INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` WHERE `ID`=$sprintID");
-        }
-        
-        public function _getSprintList(){
-            BDD::getConnection()->query('SELECT * FROM `sprints`');
-        }
 }

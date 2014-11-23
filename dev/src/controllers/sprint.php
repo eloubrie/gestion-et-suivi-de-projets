@@ -20,6 +20,12 @@ class ControllerSprint
 		return $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
 	}
         
+        public function _getGitLink($id)
+        {
+                $sprint = $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
+                return $sprint['lien_git'];
+        }
+        
         public function _buildSprintList()
 	{
 		foreach($this->modelSprint->_getSprintList() as $sprint)
@@ -27,6 +33,19 @@ class ControllerSprint
 			$this->_buildSprintListLine($sprint);
 		}
 	}
+        
+        public function _isGitLink($gitLink)
+        {
+            $gitLingRegex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+            if (preg_match($gitLingRegex, $gitLink))
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
         
         private function _buildSprintListLine($line)
 	{
@@ -43,6 +62,8 @@ class ControllerSprint
 			<td>
 				<a href="manage_sprint.php?modif_sprint=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
 				<a href="manage_sprint.php?action=suppr&sprint_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                <?php if ($this->_isGitLink($line['lien_git']))
+                                {?> <a href="<?php echo $line['lien_git']; ?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-download-alt"></span></a> <?php } ?>
 			</td>
 		</tr>
 		<?php
@@ -70,9 +91,9 @@ class ControllerSprint
 		$this->modelSprint->_insertSprint($number, $cost, $startDate, $duration, $endDate, $title, $description);
 	}
         
-        public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost)
+        public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost, $gitLink)
 	{
-		$this->modelSprint->_modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost);
+		$this->modelSprint->_modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost, $gitLink);
 	}
         
         public function _supprSprint($ID)
