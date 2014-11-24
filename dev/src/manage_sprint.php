@@ -7,7 +7,7 @@ $controllerSprint = new ControllerSprint();
 if ($_GET['action'] == "add") 
     { $controllerSprint->_insertSprint($_POST['number'], $_POST['cost'], $_POST['startDate'], $_POST['duration'], $_POST['endDate'], $_POST['title'], $_POST['sprintDescription']); }
 else if($_GET['action']=="modif") 
-    { $controllerSprint->_modifSprint($_GET['modif_sprint'], $_POST['number'], $_POST['cost'], $_POST['creationDate'], $_POST['startDate'], $_POST['duration'], $_POST['endDate'], $_POST['title'], $_POST['sprintDescription'], $_POST['validatedCost'], $_POST['linkgit']); }
+    { $controllerSprint->_modifSprint($_GET['modif_sprint'], $_POST['number'], $_POST['cost'], $_POST['creationDate'], $_POST['startDate'], $_POST['duration'], $_POST['endDate'], $_POST['title'], $_POST['sprintDescription'], $_POST['validatedCost']); }
 else if ($_GET['action'] == "suppr") 
     { $controllerSprint->_supprSprint($_GET['sprint_suppr']); }
 else 
@@ -116,20 +116,6 @@ else
                 <!-- Hidden Validated Cost Input -->
                 <input type="hidden" name="validatedCost" value="<?php echo $sprint['cout_valide']?>">
 
-                <?php
-                if(!empty($_GET['modif_sprint']))
-                { ?>
-                <!-- Git Link input-->
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="linkgit">Lien Git</label>  
-                    <div class="col-md-8">
-                        <input id="linkgit" name="linkgit" value="<?php echo $sprint['lien_git']; ?>"  type="text" placeholder="Lien Git" class="form-control input-md">
-                    </div>
-                </div>
-                <?php
-                }
-                ?>
-                
                 <!-- Validation Button -->
                 <div class="form-group">
                     <label class="col-md-3 control-label" for="submit"></label>

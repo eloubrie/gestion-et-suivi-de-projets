@@ -6,7 +6,7 @@ $controllerUs = new ControllerUs();
 $controllerSprint = new ControllerSprint(); 
 
 if($_GET['action']=="add")
-{ $controllerUs->_insertUs($_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest']); }
+{ $controllerUs->_insertUs($_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
 else if($_GET['action']=="modif")
 { $controllerUs->_modifUs($_GET['modif_US'], $_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
 else if($_GET['action']=="suppr")
@@ -65,7 +65,7 @@ else
 							<option value="0">Aucun</option>
 							<?php
 							foreach($sprints as $s)
-							{ ?><option value="<?php echo $s['ID']; ?>" <?php if($us['ID_sprint']==$s['ID']) { echo "selected"; } ?>><?php echo $s['ID']; ?></option><?php }
+							{ ?><option value="<?php echo $s['ID']; ?>" <?php if($us['ID_sprint']==$s['ID']) { echo "selected"; } ?>><?php echo $s['numero_du_sprint']; ?></option><?php }
 							?>
 						</select>
 					</div>
@@ -139,9 +139,6 @@ else
 					</div>
 				</div>
 				
-                                <?php 
-				if(!empty($_GET['modif_US'])) 
-				{ ?>
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-3 control-label" for="linkgit">Lien Git</label>  
@@ -149,9 +146,6 @@ else
 						<input id="linkgit" name="linkgit" value="<?php echo $us['lien_git']; ?>"  type="text" placeholder="Lien Git" class="form-control input-md">
 					</div>
 				</div>
-                                <?php
-                                }
-                                ?>
 
 				<!-- Button -->
 				<div class="form-group">

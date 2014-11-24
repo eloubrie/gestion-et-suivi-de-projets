@@ -8,15 +8,9 @@ $controllerSprint = new ControllerSprint();
 $controllerUs = new ControllerUs(); 
 
 $controllerSprint->_buildSprintInfo($_GET['ID']);
-$gitLink = $controllerSprint->_getGitLink($_GET['ID']);
 ?>
 
-<?php if ($controllerSprint->_isGitLink($gitLink))
-{?>
-    <a href="<?php echo $gitLink; ?>" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a>
-<?php 
-}
-?>
+<a href="#" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a>
 <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-log-out"></span>  Version du projet</a>
 <br /><br /><br />
 
@@ -46,9 +40,10 @@ $gitLink = $controllerSprint->_getGitLink($_GET['ID']);
 			</table>
 		</div>
 	</section>
-</div>
+</div><br />
 
-<a href="associate_us?sprint=<?php echo $_GET['ID']; ?>" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-list-alt"></span>  Associer une nouvelle US</a>
+<h3>Burn Down Chart</h3>
+<img src="imageBDC.php?sprint=<?php echo $_GET['ID']; ?>" /> 
 
 <?php include("structure/bottom_page.php"); ?>					
 						
