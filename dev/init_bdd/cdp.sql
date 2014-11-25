@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 25 Novembre 2014 à 19:37
+-- Généré le :  Mar 25 Novembre 2014 à 20:19
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `us` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `titre` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
-  `ID_sprint` int(11) NOT NULL DEFAULT '1',
+  `ID_sprint` int(11) DEFAULT NULL,
   `cout` int(11) NOT NULL,
   `statut` int(11) NOT NULL,
   `date_debut` date NOT NULL,
@@ -227,7 +227,7 @@ ALTER TABLE `taches`
 -- Contraintes pour la table `us`
 --
 ALTER TABLE `us`
-  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE NO ACTION ON UPDATE CASCADE;
+  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
