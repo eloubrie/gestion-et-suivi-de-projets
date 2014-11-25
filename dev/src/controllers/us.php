@@ -68,13 +68,19 @@ class ControllerUs
         }
 	
 	private function _buildBaclogLine($line)
-	{	
-                $numSprint= $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
+	{
+                if(!empty($line['ID_sprint'])){
+                    $req = $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
+                    $numSprint = $req['numero_du_sprint'];
+                }
+                else{
+                    $numSprint = NULL;
+                }
 		?>
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
 			<td><a href="us.php?ID=<?php echo $line['ID']; ?>"><?php echo $line['titre']; ?></a></td>
-                        <td><?php echo $numSprint['numero_du_sprint']; ?></td>
+                        <td><?php echo $numSprint; ?></td>
 			<td><?php echo $line['cout']; ?></td>
 			<td><?php echo $line['date_debut']; ?></td>
 			<td><?php echo $line['date_fin']; ?></td>
