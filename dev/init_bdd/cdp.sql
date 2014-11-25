@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 25 Novembre 2014 à 18:09
+-- Généré le :  Mar 25 Novembre 2014 à 19:37
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -227,7 +227,7 @@ ALTER TABLE `taches`
 -- Contraintes pour la table `us`
 --
 ALTER TABLE `us`
-  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
