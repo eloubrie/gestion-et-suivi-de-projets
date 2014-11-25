@@ -6,7 +6,7 @@ $controllerUs = new ControllerUs();
 $controllerSprint = new ControllerSprint(); 
 
 if($_GET['action']=="add")
-{ $controllerUs->_insertUs($_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
+{ $controllerUs->_insertUs($_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest']); }
 else if($_GET['action']=="modif")
 { $controllerUs->_modifUs($_GET['modif_US'], $_POST['title'],$_POST['description'],$_POST['sprint'],$_POST['cost'],$_POST['datebegin'],$_POST['dateend'],$_POST['status'],$_POST['descriptiontest'],$_POST['codetest'],$_POST['linkgit']); }
 else if($_GET['action']=="suppr")
@@ -139,6 +139,9 @@ else
 					</div>
 				</div>
 				
+				<?php 
+				if(!empty($_GET['modif_US'])) 
+				{ ?>
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-3 control-label" for="linkgit">Lien Git</label>  
@@ -146,6 +149,9 @@ else
 						<input id="linkgit" name="linkgit" value="<?php echo $us['lien_git']; ?>"  type="text" placeholder="Lien Git" class="form-control input-md">
 					</div>
 				</div>
+                                <?php
+                                }
+                                ?>
 
 				<!-- Button -->
 				<div class="form-group">

@@ -24,7 +24,7 @@ class ModelUs
 		return BDD::getConnection()->query('SELECT * FROM us WHERE ID_Sprint = '.$id);
 	}
         
-	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest)
 	{
 		BDD::getConnection()->query("INSERT INTO us VALUES (0,'".
 		mysql_real_escape_string ($title)."','".
@@ -35,8 +35,7 @@ class ModelUs
 		mysql_real_escape_string ($datebegin)."','".
 		mysql_real_escape_string ($dateend)."','0000-00-00','".
 		mysql_real_escape_string ($codetest)."','".
-		mysql_real_escape_string ($descriptiontest)."','".
-		mysql_real_escape_string ($linkgit)."')");
+		mysql_real_escape_string ($descriptiontest)."','NULL')");
 	}
 	
 	public function _modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)

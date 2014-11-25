@@ -20,29 +20,30 @@ class ModelSprint
                 date_default_timezone_set('America/New_York');
                 BDD::getConnection()->query("INSERT INTO sprints VALUES (0,'".
                 mysql_real_escape_string ($number)."','".
-				mysql_real_escape_string ($cost)."','".
-				mysql_real_escape_string (date("y-m-d"))."','".
-				mysql_real_escape_string ($startDate)."','".
-				mysql_real_escape_string ($duration)."','".
-				mysql_real_escape_string ($endDate)."','".
-				mysql_real_escape_string ($title)."','".
-				mysql_real_escape_string ($description)."','".
-				mysql_real_escape_string (0)."')");
+		mysql_real_escape_string ($cost)."','".
+		mysql_real_escape_string (date("y-m-d"))."','".
+		mysql_real_escape_string ($startDate)."','".
+		mysql_real_escape_string ($duration)."','".
+		mysql_real_escape_string ($endDate)."','".
+		mysql_real_escape_string ($title)."','".
+		mysql_real_escape_string ($description)."','".
+		mysql_real_escape_string (0)."','NULL')");
         }
         
-        public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost)
+        public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost, $gitLink)
         {
                 BDD::getConnection()->query("UPDATE sprints SET 
                 `numero_du_sprint`='".mysql_real_escape_string ($number)."',
-				`cout`='".mysql_real_escape_string ($cost)."',
-				`date_creation`='".mysql_real_escape_string ($creationDate)."',
-				`date_debut`='".mysql_real_escape_string ($startDate)."',
-				`duree`='".mysql_real_escape_string ($duration)."',
-				`date_fin`='".mysql_real_escape_string ($endDate)."',
-				`titre`='".mysql_real_escape_string ($title)."',
-				`description`='".mysql_real_escape_string ($description)."',
-				`cout_valide`='".mysql_real_escape_string ($validatedCost)."' 
-				WHERE ID = ".$ID);
+		`cout`='".mysql_real_escape_string ($cost)."',
+		`date_creation`='".mysql_real_escape_string ($creationDate)."',
+		`date_debut`='".mysql_real_escape_string ($startDate)."',
+		`duree`='".mysql_real_escape_string ($duration)."',
+		`date_fin`='".mysql_real_escape_string ($endDate)."',
+		`titre`='".mysql_real_escape_string ($title)."',
+		`description`='".mysql_real_escape_string ($description)."',
+		`cout_valide`='".mysql_real_escape_string ($validatedCost)."',
+                `lien_git`='".mysql_real_escape_string ($gitLink)."'
+		WHERE ID = ".$ID);
         }
         
         public function _supprSprint($ID)

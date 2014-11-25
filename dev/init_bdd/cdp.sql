@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Mer 12 Novembre 2014 à 13:47
--- Version du serveur :  5.6.17
--- Version de PHP :  5.5.12
+-- Host: localhost
+-- Generation Time: Nov 25, 2014 at 04:27 
+-- Server version: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,26 +17,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `cdp`
+-- Database: `cdp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `developpeurs`
+-- Table structure for table `developpeurs`
 --
 
 CREATE TABLE IF NOT EXISTS `developpeurs` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `pseudo` text COLLATE utf8_unicode_ci NOT NULL,
   `pass` text COLLATE utf8_unicode_ci NOT NULL,
   `droits` int(11) NOT NULL,
-  `email` text CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`ID`)
+  `email` text CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `developpeurs`
+-- Dumping data for table `developpeurs`
 --
 
 INSERT INTO `developpeurs` (`ID`, `pseudo`, `pass`, `droits`, `email`) VALUES
@@ -47,35 +46,30 @@ INSERT INTO `developpeurs` (`ID`, `pseudo`, `pass`, `droits`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `gantt`
+-- Table structure for table `gantt`
 --
 
 CREATE TABLE IF NOT EXISTS `gantt` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `ID_developpeur` int(11) DEFAULT NULL,
   `Jour` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ID_tache` int(11) DEFAULT NULL,
-  `ID_sprint` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `ID_developpeur` (`ID_developpeur`),
-  KEY `ID_tache` (`ID_tache`),
-  KEY `ID_sprint` (`ID_sprint`)
+  `ID_sprint` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `git`
+-- Table structure for table `git`
 --
 
 CREATE TABLE IF NOT EXISTS `git` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `lien` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`ID`)
+`ID` int(11) NOT NULL,
+  `lien` text COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
--- Contenu de la table `git`
+-- Dumping data for table `git`
 --
 
 INSERT INTO `git` (`ID`, `lien`) VALUES
@@ -84,11 +78,11 @@ INSERT INTO `git` (`ID`, `lien`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sprints`
+-- Table structure for table `sprints`
 --
 
 CREATE TABLE IF NOT EXISTS `sprints` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `numero_du_sprint` int(11) NOT NULL,
   `cout` int(11) NOT NULL,
   `date_creation` date NOT NULL,
@@ -98,26 +92,26 @@ CREATE TABLE IF NOT EXISTS `sprints` (
   `titre` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `cout_valide` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+  `lien_git` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
--- Contenu de la table `sprints`
+-- Dumping data for table `sprints`
 --
 
-INSERT INTO `sprints` (`ID`, `numero_du_sprint`, `cout`, `date_creation`, `date_debut`, `duree`, `date_fin`, `titre`, `description`, `cout_valide`) VALUES
-(1, 1, 20, '2014-11-11', '2014-11-11', '10', '2014-11-21', 'Sprint 1', 'Description du sprint 1', 5),
-(2, 2, 18, '2014-11-11', '2014-11-21', '10', '2014-12-01', 'Sprint 2', 'Description du sprint 2', 0),
-(6, 3, 18, '2014-11-11', '2014-12-01', '5', '2014-12-06', 'Sprint 3', 'Description du sprint 3', 1);
+INSERT INTO `sprints` (`ID`, `numero_du_sprint`, `cout`, `date_creation`, `date_debut`, `duree`, `date_fin`, `titre`, `description`, `cout_valide`, `lien_git`) VALUES
+(1, 1, 20, '2014-11-11', '2014-11-11', '10', '2014-11-21', 'Sprint 1', 'Description du sprint 1', 5, NULL),
+(2, 2, 18, '2014-11-11', '2014-11-21', '10', '2014-12-01', 'Sprint 2', 'Description du sprint 2', 0, NULL),
+(6, 3, 18, '2014-11-11', '2014-12-01', '5', '2014-12-06', 'Sprint 3', 'Description du sprint 3', 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `taches`
+-- Table structure for table `taches`
 --
 
 CREATE TABLE IF NOT EXISTS `taches` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `ID_US` int(11) DEFAULT NULL,
   `titre` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
@@ -127,13 +121,11 @@ CREATE TABLE IF NOT EXISTS `taches` (
   `developpeur` int(11) DEFAULT NULL,
   `statut` int(11) NOT NULL,
   `date_realisation` date DEFAULT NULL,
-  `date_test` date DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `ID_US` (`ID_US`)
+  `date_test` date DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=42 ;
 
 --
--- Contenu de la table `taches`
+-- Dumping data for table `taches`
 --
 
 INSERT INTO `taches` (`ID`, `ID_US`, `titre`, `description`, `type`, `cout`, `dependances`, `developpeur`, `statut`, `date_realisation`, `date_test`) VALUES
@@ -169,11 +161,11 @@ INSERT INTO `taches` (`ID`, `ID_US`, `titre`, `description`, `type`, `cout`, `de
 -- --------------------------------------------------------
 
 --
--- Structure de la table `us`
+-- Table structure for table `us`
 --
 
 CREATE TABLE IF NOT EXISTS `us` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+`ID` int(11) NOT NULL,
   `titre` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
   `ID_sprint` int(11) DEFAULT NULL,
@@ -184,13 +176,11 @@ CREATE TABLE IF NOT EXISTS `us` (
   `date_test` date DEFAULT NULL,
   `code_test` text COLLATE utf8_unicode_ci,
   `description_test` text COLLATE utf8_unicode_ci,
-  `lien_git` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`ID`),
-  KEY `ID_sprint` (`ID_sprint`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=75 ;
+  `lien_git` text COLLATE utf8_unicode_ci
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=78 ;
 
 --
--- Contenu de la table `us`
+-- Dumping data for table `us`
 --
 
 INSERT INTO `us` (`ID`, `titre`, `description`, `ID_sprint`, `cout`, `statut`, `date_debut`, `date_fin`, `date_test`, `code_test`, `description_test`, `lien_git`) VALUES
@@ -202,31 +192,106 @@ INSERT INTO `us` (`ID`, `titre`, `description`, `ID_sprint`, `cout`, `statut`, `
 (71, 'Titre US6', 'Desc US6', 6, 2, 0, '2014-11-29', '2014-11-30', '0000-00-00', 'Code US6', 'Desc US6', 'Lien US6'),
 (72, 'Titre US7', 'Desc US7', 6, 5, 3, '2014-11-20', '2014-11-22', '2014-11-27', 'Code US7', 'Desc US7', 'Lien US7'),
 (73, 'Titre US8', 'Desc US8', 6, 3, 1, '2014-11-25', '2014-11-28', '0000-00-00', 'Code US8', 'Desc US8', 'Lien US8'),
-(74, 'Titre US9', 'Desc US9', 6, 4, 0, '2014-11-25', '2014-11-29', '0000-00-00', 'Code US9', 'Desc US9', 'Lien US9');
+(74, 'Titre US9', 'Desc US9', 6, 4, 0, '2014-11-25', '2014-11-29', '0000-00-00', 'Code US9', 'Desc US9', 'Lien US9'),
+(77, 'titreUS10', 'fefe', NULL, 5, 0, '2014-11-10', '0000-00-00', '0000-00-00', '', '', 'https://github.com/eloubrie/gestion-et-suivi-de-projets/tree/develop');
 
 --
--- Contraintes pour les tables exportées
+-- Indexes for dumped tables
 --
 
 --
--- Contraintes pour la table `gantt`
+-- Indexes for table `developpeurs`
+--
+ALTER TABLE `developpeurs`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `gantt`
 --
 ALTER TABLE `gantt`
-  ADD CONSTRAINT `gantt_sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `gantt_developpeur` FOREIGN KEY (`ID_developpeur`) REFERENCES `developpeurs` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `gantt_tache` FOREIGN KEY (`ID_tache`) REFERENCES `taches` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
+ ADD PRIMARY KEY (`ID`), ADD KEY `ID_developpeur` (`ID_developpeur`), ADD KEY `ID_tache` (`ID_tache`), ADD KEY `ID_sprint` (`ID_sprint`);
 
 --
--- Contraintes pour la table `taches`
+-- Indexes for table `git`
+--
+ALTER TABLE `git`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `sprints`
+--
+ALTER TABLE `sprints`
+ ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `taches`
 --
 ALTER TABLE `taches`
-  ADD CONSTRAINT `us` FOREIGN KEY (`ID_US`) REFERENCES `us` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
+ ADD PRIMARY KEY (`ID`), ADD KEY `ID_US` (`ID_US`);
 
 --
--- Contraintes pour la table `us`
+-- Indexes for table `us`
 --
 ALTER TABLE `us`
-  ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
+ ADD PRIMARY KEY (`ID`), ADD KEY `ID_sprint` (`ID_sprint`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `developpeurs`
+--
+ALTER TABLE `developpeurs`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `gantt`
+--
+ALTER TABLE `gantt`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `git`
+--
+ALTER TABLE `git`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `sprints`
+--
+ALTER TABLE `sprints`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `taches`
+--
+ALTER TABLE `taches`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
+--
+-- AUTO_INCREMENT for table `us`
+--
+ALTER TABLE `us`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=78;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `gantt`
+--
+ALTER TABLE `gantt`
+ADD CONSTRAINT `gantt_developpeur` FOREIGN KEY (`ID_developpeur`) REFERENCES `developpeurs` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `gantt_sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `gantt_tache` FOREIGN KEY (`ID_tache`) REFERENCES `taches` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `taches`
+--
+ALTER TABLE `taches`
+ADD CONSTRAINT `us` FOREIGN KEY (`ID_US`) REFERENCES `us` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `us`
+--
+ALTER TABLE `us`
+ADD CONSTRAINT `sprint` FOREIGN KEY (`ID_sprint`) REFERENCES `sprints` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

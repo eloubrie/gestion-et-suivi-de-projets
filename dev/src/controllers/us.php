@@ -32,6 +32,12 @@ class ControllerUs
 		return $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
 	}
         
+        public function _getGitLink($id)
+        {
+                $us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
+                return $us['lien_git'];
+        }
+        
         public function _buildUSListFromSprint($id)
 	{
 		foreach($this->modelUs->_getUsFromSprint($id) as $us)
@@ -47,6 +53,19 @@ class ControllerUs
 			$this->_buildBaclogLine($line);
 		}
 	}
+        
+        public function _isGitLink($gitLink)
+        {
+            $gitLingRegex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+            if (preg_match($gitLingRegex, $gitLink))
+            {
+                return TRUE;
+            }
+            else
+            {
+                return FALSE;
+            }
+        }
 	
 	private function _buildBaclogLine($line)
 	{	
@@ -64,6 +83,8 @@ class ControllerUs
 			<td>
 				<a href="manage_us.php?modif_US=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
 				<a href="manage_us.php?action=suppr&US_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                                <?php if ($this->_isGitLink($line['lien_git']))
+                                {?> <a href="<?php echo $line['lien_git']; ?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-download-alt"></span></a> <?php } ?>
 			</td>
 		</tr>
 		<?php
@@ -94,9 +115,9 @@ class ControllerUs
                 $this->_updateSprints();
 	}
 	
-	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
+	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest)
 	{
-		$this->modelUs->_insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit);
+		$this->modelUs->_insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest);
 	}
 	
 	public function _modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
