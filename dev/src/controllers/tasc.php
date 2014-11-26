@@ -68,6 +68,20 @@ class ControllerTasc
 	
 	private function _buildTascListLine($line)
 	{
+                if(!empty($line['ID_US'])){
+                    $US = $line['ID_US'];
+                    $req = $this->modelTasc->_getSprintTasc($line['ID'])->fetch(PDO::FETCH_ASSOC);
+                    if(!empty($req['numero_du_sprint'])){
+                       $sprint = $req['numero_du_sprint'];
+                    }
+                     else {                    
+                         $sprint = NULL;
+                     }
+                }
+                else{
+                    $US = NULL;
+                }
+                
 		?>
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
@@ -75,6 +89,8 @@ class ControllerTasc
 			<td><?php echo $this->_tascType($line['type']); ?></td>
 			<td><?php echo $line['dependances']; ?></td>
 			<td><?php echo $line['cout']; ?></td>
+                        <td><?php echo $US; ?></td>
+                        <td><?php echo $sprint; ?></td>
 			<td><?php echo $this->_DeveloperName($line['developpeur']); ?></td>
 			<td><?php echo $this->_TascStatus($line['statut']); ?></td>
 			<td><?php echo $line['date_realisation']; ?></td>
@@ -90,14 +106,27 @@ class ControllerTasc
 	public function _buildTascInfo($id)
 	{
 		$tasc = $this->modelTasc->_getTasc($id)->fetch(PDO::FETCH_ASSOC);
-		
+		if(!empty($tasc['ID_US'])){
+                    $US = $tasc['ID_US'];
+                    $req = $this->modelTasc->_getSprintTasc($tasc['ID'])->fetch(PDO::FETCH_ASSOC);
+                    if(!empty($req['numero_du_sprint'])){
+                       $sprint = $req['numero_du_sprint'];
+                    }
+                     else {                    
+                         $sprint = NULL;
+                     }
+                }
+                else{
+                    $US = NULL;
+                }
 		?>
 		<h3><?php echo $tasc['titre']; ?> (tâche numéro <?php echo $tasc['ID']; ?>)</h3><br />
 		<p><b>Description :</b> <?php echo $tasc['description']; ?></p>
-		<p><b>US :</b> <?php echo $tasc['ID_US']; ?></p>
 		<p><b>Type :</b> <?php echo $this->_tascType($tache['type']); ?></p>
 		<p><b>Coût :</b> <?php echo $tasc['cout']; ?></p>
 		<p><b>Dépendances :</b> <?php echo $tasc['dependances']; ?></p>
+                <p><b>US :</b> <?php echo $US; ?></p>
+                <p><b>Sprint :</b> <?php echo $sprint; ?></p>
 		<p><b>Développeur :</b> <?php echo $this->_DeveloperName($tasc['developpeur']); ?></p>
 		<p><b>Statut :</b> <?php echo $this->_TascStatus($tasc['statut']); ?></p>
 		<p><b>Date de réalisation :</b> <?php echo $tasc['date_realisation']; ?></p>

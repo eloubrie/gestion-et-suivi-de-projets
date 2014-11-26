@@ -23,6 +23,8 @@ $controllerTasc = new ControllerTasc();
 						<th>Type</th>
 						<th>Dépendances</th>
 						<th>Coût</th>
+                                                <th>US</th>
+                                                <th>Sprint</th>
 						<th>Développeur</th>
 						<th>Statut</th>
 						<th>Date réalisation</th>

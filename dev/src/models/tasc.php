@@ -55,4 +55,8 @@ class ModelTasc
         public function _updateDeveloperTasc($ID, $develop){
             return BDD::getConnection()->query("UPDATE taches SET `developpeur`=$develop WHERE ID=$ID");
         }
+        
+        public function _getSprintTasc($ID){
+            return BDD::getConnection()->query("SELECT `numero_du_sprint` FROM `sprints` INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` INNER JOIN `taches` on `us`.`ID`=`taches`.`ID_US` WHERE `taches`.`ID`=$ID");
+        }
 }
