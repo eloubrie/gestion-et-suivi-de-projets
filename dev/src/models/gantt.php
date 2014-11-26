@@ -66,4 +66,8 @@ class ModelGantt {
     public function _getTasc($dev, $day, $sprint){
         return BDD::getConnection()->query("SELECT `ID_tache` FROM `gantt` WHERE (ID_developpeur=$dev AND Jour=$day AND ID_sprint=$sprint)");
     }
+    
+    public function _updateTascState($idTasc, $developer){
+        return $this->tasc->_updateDeveloperTasc($idTasc,$developer);
+    }
 }

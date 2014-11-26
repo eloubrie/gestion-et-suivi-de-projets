@@ -51,4 +51,8 @@ class ModelTasc
 	{
 		BDD::getConnection()->query("DELETE FROM taches WHERE ID=".$ID);
 	}
+        
+        public function _updateDeveloperTasc($ID, $develop){
+            return BDD::getConnection()->query("UPDATE taches SET `developpeur`=$develop WHERE ID=$ID");
+        }
 }

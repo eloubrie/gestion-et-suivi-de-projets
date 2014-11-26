@@ -21,6 +21,7 @@ class ControllerGantt
                 $parts = explode('_', $cle);
                 if($parts[0] === $this->selectTag){
                    $this->modelGantt->_updateTasc($tasc, $parts[1], $parts[2], $this->idSprint);
+                   $this->modelGantt->_updateTascState($tasc, $parts[1]);
                 }
             }
         }
