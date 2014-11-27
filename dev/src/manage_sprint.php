@@ -63,28 +63,6 @@ else
                 </div>
 
                 <!-- Sprint Cost Input -->
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="cost">Coût</label>
-                    <div class="col-md-8">
-                        <select id="cost" name="cost" class="form-control">
-                            <option value="1" <?php if($sprint['cout']==1) { echo "selected"; } ?>>1</option>
-                            <option value="2" <?php if($sprint['cout']==2) { echo "selected"; } ?>>2</option>
-                            <option value="3" <?php if($sprint['cout']==3) { echo "selected"; } ?>>3</option>
-                            <option value="5" <?php if($sprint['cout']==5) { echo "selected"; } ?>>5</option>
-                            <option value="8" <?php if($sprint['cout']==8) { echo "selected"; } ?>>8</option>
-                            <option value="13" <?php if($sprint['cout']==13) { echo "selected"; } ?>>13</option>
-                            <option value="21" <?php if($sprint['cout']==21) { echo "selected"; } ?>>21</option>
-                            <option value="34" <?php if($sprint['cout']==34) { echo "selected"; } ?>>34</option>
-                            <option value="55" <?php if($sprint['cout']==55) { echo "selected"; } ?>>55</option>
-                            <option value="89" <?php if($sprint['cout']==89) { echo "selected"; } ?>>89</option>
-                            <option value="144" <?php if($sprint['cout']==144) { echo "selected"; } ?>>144</option>
-                            <option value="233" <?php if($sprint['cout']==233) { echo "selected"; } ?>>233</option>
-                            <option value="377" <?php if($sprint['cout']==377) { echo "selected"; } ?>>377</option>
-                            <option value="610" <?php if($sprint['cout']==610) { echo "selected"; } ?>>610</option>
-                            <option value="987" <?php if($sprint['cout']==987) { echo "selected"; } ?>>987</option>
-                        </select>
-                    </div>
-                </div>
 
                 <!-- Sprint Duration Input-->
                 <div class="form-group">
