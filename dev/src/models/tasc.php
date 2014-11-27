@@ -59,4 +59,8 @@ class ModelTasc
         public function _getSprintTasc($ID){
             return BDD::getConnection()->query("SELECT `numero_du_sprint` FROM `sprints` INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` INNER JOIN `taches` on `us`.`ID`=`taches`.`ID_US` WHERE `taches`.`ID`=$ID");
         }
+        
+        public function _getSprintIDTasc($ID){
+            return BDD::getConnection()->query("SELECT `sprints`.`ID` FROM `sprints` INNER JOIN `us` on `sprints`.`ID`=`us`.`ID_sprint` INNER JOIN `taches` on `us`.`ID`=`taches`.`ID_US` WHERE `taches`.`ID`=$ID");         
+        }
 }

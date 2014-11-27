@@ -112,10 +112,23 @@ class ControllerGantt
             $tascs = $this->modelGantt->_getAllTascs();
             ?><select name="<?php echo $selectID?>"> 
             <?php
+            echo "<option value=-1>-------</option>";
             foreach($tascs as $tasc){
+                $sprintTask = $this->modelGantt->_getSprintIDTasc($tasc['ID'])->fetch(PDO::FETCH_ASSOC);
+                if($sprintTask['ID'] !== $this->idSprint)
+                    continue;
+               // $tascArrayAll = $this->modelGantt->_getTasc($dev_name,$cDay,$this->idSprint);
                 $tascArray = $this->modelGantt->_getTasc($dev_name,$cDay,$this->idSprint);
+             /*   $tascArray = array();
+                foreach($tascArrayAll as $task){
+                    $sprintTask = $this->modelGantt->_getSprintIDTasc($task);
+                    if($sprintTask['ID'] === $this->idSprint){
+                        echo $sprintTask['ID'];
+                        array_push($tascArray, $task);
+                    }
+                }*/
                 foreach ($tascArray as $tascmp) {
-                    if($tascmp['ID_tache'] === $tasc['ID']){
+                    if($tascmp['ID_tache'] === $tasc['ID']){       
                         ?><option value="<?php echo $tasc['ID'] ?>" selected="selected"> T<?php echo $tasc['ID']?></option>
                     <?php
                     }   
