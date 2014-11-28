@@ -19,34 +19,34 @@ class ModelTasc
         public function _insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
         {
                 BDD::getConnection()->query("INSERT INTO taches VALUES (0,'".
-                mysql_real_escape_string ($associatedUS)."','".
-		mysql_real_escape_string ($title)."','".
-		mysql_real_escape_string ($tascDescription)."','".
-		mysql_real_escape_string ($tascType)."','".
-		mysql_real_escape_string ($cost)."','".
-		mysql_real_escape_string ($otherTascsDependencies)."','".
-		mysql_real_escape_string ($developer)."','".
-		mysql_real_escape_string ($status)."','".
-		mysql_real_escape_string ($realisationDate)."','".
-		mysql_real_escape_string ($testDate)."')");
+                addslashes ($associatedUS)."','".
+		addslashes ($title)."','".
+		addslashes ($tascDescription)."','".
+		addslashes ($tascType)."','".
+		addslashes ($cost)."','".
+		addslashes ($otherTascsDependencies)."','".
+		addslashes ($developer)."','".
+		addslashes ($status)."','".
+		addslashes ($realisationDate)."','".
+		addslashes ($testDate)."')");
         }
         
         public function _modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
         {
 			BDD::getConnection()->query("UPDATE taches SET 
-			`titre`='".mysql_real_escape_string ($title)."',
-			`description`='".mysql_real_escape_string ($tascDescription)."',
-			`type`='".mysql_real_escape_string ($tascType)."',
-			`cout`='".mysql_real_escape_string ($cost)."',
-			`dependances`='".mysql_real_escape_string ($otherTascsDependencies)."',
-			`developpeur`='".mysql_real_escape_string ($developer)."',
-			`statut`='".mysql_real_escape_string ($status)."',
-			`date_realisation`='".mysql_real_escape_string ($realisationDate)."',
-			`date_test`='".mysql_real_escape_string ($testDate)."' 
+			`titre`='".addslashes ($title)."',
+			`description`='".addslashes ($tascDescription)."',
+			`type`='".addslashes ($tascType)."',
+			`cout`='".addslashes ($cost)."',
+			`dependances`='".addslashes ($otherTascsDependencies)."',
+			`developpeur`='".addslashes ($developer)."',
+			`statut`='".addslashes ($status)."',
+			`date_realisation`='".addslashes ($realisationDate)."',
+			`date_test`='".addslashes ($testDate)."' 
 			WHERE ID = ".$ID);
 		
 			BDD::getConnection()->query("UPDATE taches SET 
-			`ID_US`='".mysql_real_escape_string ($associatedUS)."'
+			`ID_US`='".addslashes ($associatedUS)."'
 			WHERE ID = ".$ID);
         }
         

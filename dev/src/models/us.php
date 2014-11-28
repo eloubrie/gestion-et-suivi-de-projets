@@ -27,33 +27,33 @@ class ModelUs
 	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest)
 	{
 		BDD::getConnection()->query("INSERT INTO us VALUES (0,'".
-		mysql_real_escape_string ($title)."','".
-		mysql_real_escape_string ($description)."','".
-		mysql_real_escape_string ($sprint)."','".
-		mysql_real_escape_string ($cout)."','".
-		mysql_real_escape_string ($statut)."','".
-		mysql_real_escape_string ($datebegin)."','".
-		mysql_real_escape_string ($dateend)."','0000-00-00','".
-		mysql_real_escape_string ($codetest)."','".
-		mysql_real_escape_string ($descriptiontest)."','NULL')");
+		addslashes ($title)."','".
+		addslashes ($description)."','".
+		addslashes ($sprint)."','".
+		addslashes ($cout)."','".
+		addslashes ($statut)."','".
+		addslashes ($datebegin)."','".
+		addslashes ($dateend)."','0000-00-00','".
+		addslashes ($codetest)."','".
+		addslashes ($descriptiontest)."','NULL')");
 	}
 	
 	public function _modifUs($ID, $title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest, $linkgit)
 	{
 		BDD::getConnection()->query("UPDATE us SET 
-		`titre`='".mysql_real_escape_string ($title)."',
-		`description`='".mysql_real_escape_string ($description)."',
-		`cout`='".mysql_real_escape_string ($cout)."',
-		`statut`='".mysql_real_escape_string ($statut)."',
-		`date_debut`='".mysql_real_escape_string ($datebegin)."',
-		`date_fin`='".mysql_real_escape_string ($dateend)."',
-		`code_test`='".mysql_real_escape_string ($codetest)."',
-		`description_test`='".mysql_real_escape_string ($descriptiontest)."',
-		`lien_git`='".mysql_real_escape_string ($linkgit)."' 
+		`titre`='".addslashes ($title)."',
+		`description`='".addslashes ($description)."',
+		`cout`='".addslashes ($cout)."',
+		`statut`='".addslashes ($statut)."',
+		`date_debut`='".addslashes ($datebegin)."',
+		`date_fin`='".addslashes ($dateend)."',
+		`code_test`='".addslashes ($codetest)."',
+		`description_test`='".addslashes ($descriptiontest)."',
+		`lien_git`='".addslashes ($linkgit)."' 
 		WHERE ID = ".$ID);
 		
 		BDD::getConnection()->query("UPDATE us SET 
-		`ID_sprint`='".mysql_real_escape_string ($sprint)."'
+		`ID_sprint`='".addslashes ($sprint)."'
 		WHERE ID = ".$ID);
 	}
 	

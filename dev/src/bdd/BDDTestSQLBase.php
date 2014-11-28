@@ -11,11 +11,11 @@ class BDDTestSQLBase implements BDDTestSQL{
     
     function __construct() {
          $this->sqlSelect = "SELECT * FROM us";
-         $this->sqlInsert = "INSERT INTO `us`(`ID`, `titre`, `description`, `ID_sprint`, `cout`, `statut`, `date_debut`, `date_fin`, `date_test`, `code_test`, `description_test`, `lien_git`) VALUES ('42', 'titre', 'desc', NULL, '7', '0', '2014-10-01', '2014-10-16', '2014-10-07', 'codetest', 'descriptiontest', 'liengit')";
-         $this->sqlRemove = "DELETE FROM `cdp`.`us` WHERE `us`.`ID` = 42";
-         $this->sqlUpdate = "UPDATE `cdp`.`us` SET `titre` = 'ddqds' WHERE `us`.`ID` = 42";
-         
+         $this->sqlInsert = "INSERT INTO `us` VALUES ('42', 'titre', 'desc', NULL, '7', '0', '2014-10-01', '2014-10-16', '2014-10-07', 'codetest', 'descriptiontest', 'liengit')";
+         $this->sqlRemove = "DELETE FROM `us` WHERE `ID` = 42";
+         $this->sqlUpdate = "UPDATE `us` SET `titre` = 'ddqds' WHERE `ID` = 42";
     }
+	
     public function insertRequest(){
         $array = BDD::getConnection()->query($this->sqlInsert);
         if($array != FALSE){

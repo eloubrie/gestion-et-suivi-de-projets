@@ -44,7 +44,7 @@ class ModelGantt {
     }
     
     public function _setCurrentDay($id, $day){
-        return BDD::getConnection()->query("UPDATE gantt SET `Jour`='".mysql_real_escape_string ($day)."'WHERE ID = ".$id);
+        return BDD::getConnection()->query("UPDATE gantt SET `Jour`='".$day."'WHERE ID = ".$id);
     }
     
     public function _insertGantt($devID, $day, $tascID, $sprintID){

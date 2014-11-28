@@ -10,10 +10,10 @@ class ModelDeveloper
         public function _insertDeveloper($pseudo, $password, $email)
         {
                 BDD::getConnection()->query("INSERT INTO `developpeurs` VALUES (0,'".
-                mysql_real_escape_string ($pseudo)."','".
-		mysql_real_escape_string ($password)."','".
-		mysql_real_escape_string (0)."','".
-		mysql_real_escape_string ($email)."')");
+                addslashes ($pseudo)."','".
+		addslashes ($password)."','".
+		addslashes (0)."','".
+		addslashes ($email)."')");
         }
         
         public function _getDevelopersName(){
