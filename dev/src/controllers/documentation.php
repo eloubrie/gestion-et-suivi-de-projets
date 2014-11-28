@@ -33,7 +33,7 @@ class ControllerDocumentation
                 $devs = $this->modelDev->_getDevelopers();
                 $git = $this->modelGit->_getGitURL()->fetch(PDO::FETCH_ASSOC);
 		?>
-                <h3 style="text-decoration: underline;">Informations basiques sur le projet :</h3><br />
+                <h3 style="text-decoration: underline;">Informations générales sur le projet :</h3><br />
 		<p><b>Description du projet :</b> <?php echo $documentation['description']; ?></p>
                 <p><b>Développeurs participant au projet :</b> <?php $this->_buildDevelopersList($devs); ?></p>
 		<br />

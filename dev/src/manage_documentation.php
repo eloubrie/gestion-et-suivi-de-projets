@@ -23,7 +23,7 @@ else
             <fieldset>
 
                 <!-- Fieldset Name -->
-                <legend>Informations Basiques</legend
+                <legend>Informations Générales</legend>
 
                 <!-- Documentation Description Input -->
                 <div class="form-group">
@@ -38,7 +38,7 @@ else
             <fieldset>
 
                 <!-- Fieldset Name -->
-                <legend>Informations Techniques</legend
+                <legend>Informations Techniques</legend>
 
                 <!-- Operating Systems Input -->
                 <div class="form-group">
