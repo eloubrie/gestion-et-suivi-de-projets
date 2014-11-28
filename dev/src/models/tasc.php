@@ -33,18 +33,21 @@ class ModelTasc
         
         public function _modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
         {
-                BDD::getConnection()->query("UPDATE taches SET 
-                `ID_US`='".mysql_real_escape_string ($associatedUS)."',
-		`titre`='".mysql_real_escape_string ($title)."',
-		`description`='".mysql_real_escape_string ($tascDescription)."',
-		`type`='".mysql_real_escape_string ($tascType)."',
-		`cout`='".mysql_real_escape_string ($cost)."',
-		`dependances`='".mysql_real_escape_string ($otherTascsDependencies)."',
-		`developpeur`='".mysql_real_escape_string ($developer)."',
-		`statut`='".mysql_real_escape_string ($status)."',
-		`date_realisation`='".mysql_real_escape_string ($realisationDate)."',
-		`date_test`='".mysql_real_escape_string ($testDate)."' 
-		WHERE ID = ".$ID);
+			BDD::getConnection()->query("UPDATE taches SET 
+			`titre`='".mysql_real_escape_string ($title)."',
+			`description`='".mysql_real_escape_string ($tascDescription)."',
+			`type`='".mysql_real_escape_string ($tascType)."',
+			`cout`='".mysql_real_escape_string ($cost)."',
+			`dependances`='".mysql_real_escape_string ($otherTascsDependencies)."',
+			`developpeur`='".mysql_real_escape_string ($developer)."',
+			`statut`='".mysql_real_escape_string ($status)."',
+			`date_realisation`='".mysql_real_escape_string ($realisationDate)."',
+			`date_test`='".mysql_real_escape_string ($testDate)."' 
+			WHERE ID = ".$ID);
+		
+			BDD::getConnection()->query("UPDATE taches SET 
+			`ID_US`='".mysql_real_escape_string ($associatedUS)."'
+			WHERE ID = ".$ID);
         }
         
         public function _supprTasc($ID)

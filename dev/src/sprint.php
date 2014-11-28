@@ -11,14 +11,11 @@ $controllerSprint->_buildSprintInfo($_GET['ID']);
 $gitLink = $controllerSprint->_getGitLink($_GET['ID']);
 ?>
 
-<?php if ($controllerSprint->_isGitLink($gitLink))
-{?>
-    <a href="<?php echo $gitLink; ?>" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a>
 <?php 
-}
+if($controllerSprint->_isGitLink($gitLink))
+{?><br /><a href="<?php echo $gitLink; ?>" class="btn btn-primary btn-warning"><span class="glyphicon glyphicon-save"></span>  Télécharger le code</a><div style="clear : both;"><?php }
 ?>
-<a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-log-out"></span>  Version du projet</a>
-<br /><br /><br />
+<br /><br />
 
 <div class="row">
 	<section class="col-sm-12">

@@ -101,7 +101,7 @@ else
                     <label class="col-md-3 control-label" for="associatedUS">US associée(s)</label>
                     <div class="col-md-8">
                         <select id="associatedUS" name="associatedUS" class="form-control">
-                            <option value="0">Aucune</option>
+                            <option value="0">Choisir une US</option>
                             <?php
                             foreach ($usList as $us) {
                                 ?><option value="<?php echo $us['ID']; ?>" <?php if($tasc['ID_US']==$us['ID']) { echo "selected"; } ?>><?php echo '#' . $us['ID'] . ': ' . $us['titre']; ?></option><?php }

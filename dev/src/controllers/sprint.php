@@ -82,7 +82,6 @@ class ControllerSprint
 		<p><b>Date de début :</b> <?php echo $sprint['date_debut']; ?></p>
 		<p><b>Date de fin :</b> <?php echo $sprint['date_fin']; ?></p>
 		<p><b>Coût validé :</b> <?php echo $sprint['cout_valide']; ?></p>
-		<br />
 		<?php
 	}
         

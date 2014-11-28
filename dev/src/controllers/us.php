@@ -102,7 +102,11 @@ class ControllerUs
 	public function _buildUsInfo($id)
 	{
 		$us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
-		$numSprint= $this->modelUs->_getSprintNumberByID($us['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
+		
+		if(!empty($us['ID_sprint']))
+		{ $numSprint = $this->modelUs->_getSprintNumberByID($us['ID_sprint'])->fetch(PDO::FETCH_ASSOC); }
+		else
+		{ $numSprint['numero_du_sprint'] = "Aucun"; }
 
 		?>
 		<h3><?php echo $us['titre']; ?> (US numéro <?php echo $us['ID']; ?>)</h3><br />
@@ -114,7 +118,6 @@ class ControllerUs
 		<p><b>Date fin :</b> <?php echo $us['date_fin']; ?></p>
 		<p><b>Description du test :</b> <?php echo $us['description_test']; ?></p>
 		<p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
-		<br />
 		<?php
                 
                 $this->_cleanSprintCost();

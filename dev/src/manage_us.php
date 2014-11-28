@@ -62,7 +62,7 @@ else
 					<label class="col-md-3 control-label" for="sprint">Sprint</label>
 					<div class="col-md-8">
 						<select id="sprint" name="sprint" class="form-control">
-							<option value="0">Aucun</option>
+							<option value="0">Choisir un sprint</option>
 							<?php
 							foreach($sprints as $s)
 							{ ?><option value="<?php echo $s['ID']; ?>" <?php if($us['ID_sprint']==$s['ID']) { echo "selected"; } ?>><?php echo $s['numero_du_sprint']; ?></option><?php }

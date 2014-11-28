@@ -43,7 +43,6 @@ class ModelUs
 		BDD::getConnection()->query("UPDATE us SET 
 		`titre`='".mysql_real_escape_string ($title)."',
 		`description`='".mysql_real_escape_string ($description)."',
-		`ID_sprint`='".mysql_real_escape_string ($sprint)."',
 		`cout`='".mysql_real_escape_string ($cout)."',
 		`statut`='".mysql_real_escape_string ($statut)."',
 		`date_debut`='".mysql_real_escape_string ($datebegin)."',
@@ -51,6 +50,10 @@ class ModelUs
 		`code_test`='".mysql_real_escape_string ($codetest)."',
 		`description_test`='".mysql_real_escape_string ($descriptiontest)."',
 		`lien_git`='".mysql_real_escape_string ($linkgit)."' 
+		WHERE ID = ".$ID);
+		
+		BDD::getConnection()->query("UPDATE us SET 
+		`ID_sprint`='".mysql_real_escape_string ($sprint)."'
 		WHERE ID = ".$ID);
 	}
 	

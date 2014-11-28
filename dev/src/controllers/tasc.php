@@ -124,9 +124,9 @@ class ControllerTasc
 		<p><b>Description :</b> <?php echo $tasc['description']; ?></p>
 		<p><b>Type :</b> <?php echo $this->_tascType($tache['type']); ?></p>
 		<p><b>Coût :</b> <?php echo $tasc['cout']; ?></p>
-		<p><b>Dépendances :</b> <?php echo $tasc['dependances']; ?></p>
-                <p><b>US :</b> <?php echo $US; ?></p>
-                <p><b>Sprint :</b> <?php echo $sprint; ?></p>
+		<p><b>Dépendances :</b> <?php if(!empty($tasc['dependances'])) { echo $tasc['dependances']; } else { echo "Aucune"; }?></p>
+        <p><b>US :</b> <?php if(!empty($US)) { echo $US; } else { echo "Aucune"; }?></p>
+        <p><b>Sprint :</b> <?php if(!empty($sprint)) { echo $sprint; } else { echo "Aucun"; }?></p>
 		<p><b>Développeur :</b> <?php echo $this->_DeveloperName($tasc['developpeur']); ?></p>
 		<p><b>Statut :</b> <?php echo $this->_TascStatus($tasc['statut']); ?></p>
 		<p><b>Date de réalisation :</b> <?php echo $tasc['date_realisation']; ?></p>
