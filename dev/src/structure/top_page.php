@@ -23,6 +23,7 @@ session_start();
 					<a href="tasc_list.php">Liste des tâches</a>
 					<a href="gantt.php">Gantt</a>
 					<a href="results.php">Bilan</a>
+                                        <a href="documentation.php">Documentation</a>
 					<a href="git.php">Dépôt git</a>
 					<?php
 					if (isset($_SESSION['pseudo']))
