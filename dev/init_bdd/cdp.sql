@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Sam 29 Novembre 2014 à 20:51
+-- Généré le: Sam 29 Novembre 2014 à 21:15
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.16
 
@@ -15,12 +15,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
---
--- Base de données: `cdp`
---
-CREATE DATABASE IF NOT EXISTS `cdp` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cdp`;
 
 -- --------------------------------------------------------
 
