@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>modifier_documentation</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">modifier_documentation</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/gestion-et-suivi-de-projets/dev/src/initbdd.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/gestion-et-suivi-de-projets/dev/src/index.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Documentation</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Editer la documentation</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=projectDescription</td>
+	<td>Description projet</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=operatingSystems</td>
+	<td>Windows, Linux &amp; Mac</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=navigators</td>
+	<td>firefox &amp; chrome</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=languages</td>
+	<td>J2EE &amp; javacript</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=frameworks</td>
+	<td>cake-php</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=otherTools</td>
+	<td>Maven</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=p</td>
+	<td>Description du projet : Description projet</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[2]</td>
+	<td>Développeurs participant au projet : loubrie - cheminade - lamoureux</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[4]</td>
+	<td>Systèmes d'exploitations supportés : Windows, Linux &amp; Mac</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[5]</td>
+	<td>Navigateurs supportés : firefox &amp; chrome</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[6]</td>
+	<td>Langages de programmations utilisés : J2EE &amp; javacript</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[7]</td>
+	<td>Frameworks utilisés : cake-php</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[8]</td>
+	<td>Autres outils utilisés : Maven</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
