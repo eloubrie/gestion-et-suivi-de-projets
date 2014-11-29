@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>New Test</title>
+<title>empty_test</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">New Test</td></tr>
+<tr><td rowspan="1" colspan="3">empty_test</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -23,65 +23,69 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Liste des tâches</td>
+	<td>link=Tâches</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Tache 12</td>
+	<td>link=Tache 3</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>css=h3</td>
-	<td>Tache 12 (tâche numéro 25)</td>
+	<td>Tache 3 (tâche numéro 16)</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>css=p</td>
-	<td>Description : Desc12</td>
+	<td>Description : Desc3</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[2]</td>
-	<td>US : 70</td>
-</tr>
-<tr>
-	<td>verifyText</td>
-	<td>//div[@id='texte']/p[3]</td>
 	<td>Type : Doc</td>
 </tr>
 <tr>
 	<td>verifyText</td>
+	<td>//div[@id='texte']/p[3]</td>
+	<td>Coût : 3</td>
+</tr>
+<tr>
+	<td>verifyText</td>
 	<td>//div[@id='texte']/p[4]</td>
-	<td>Coût : 4</td>
+	<td>Dépendances : 1, 2</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[5]</td>
-	<td>Dépendances : 5, 7</td>
+	<td>US : 67</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[6]</td>
-	<td>Développeur : loubrie</td>
+	<td>Sprint : 1</td>
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>css=span.termine</td>
-	<td>Terminé</td>
+	<td>//div[@id='texte']/p[7]</td>
+	<td>Développeur : lamoureux</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[8]</td>
-	<td>Date de réalisation : 2014-11-25</td>
+	<td>Statut : A faire</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[9]</td>
-	<td>Date du dernier test : 2014-11-26</td>
+	<td>Date de réalisation : 0000-00-00</td>
 </tr>
-
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/p[10]</td>
+	<td>Date du dernier test : 0000-00-00</td>
+</tr>
 </tbody></table>
 </body>
 </html>

@@ -23,33 +23,33 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Liste des sprints</td>
+	<td>link=Sprints</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Sprint 3</td>
+	<td>link=Sprint 2</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>css=h3</td>
-	<td>Sprint 3 (Sprint numéro 3)</td>
+	<td>Sprint 2 (Sprint numéro 2)</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>css=p</td>
-	<td>Description : Description du sprint 3</td>
+	<td>Description : Description du sprint 2</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[2]</td>
-	<td>Coût : 18</td>
+	<td>Coût : 12</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[3]</td>
-	<td>Durée : 5</td>
+	<td>Durée : 10</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -59,12 +59,12 @@
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[5]</td>
-	<td>Date de début : 2014-12-01</td>
+	<td>Date de début : 2014-11-21</td>
 </tr>
 <tr>
 	<td>verifyText</td>
 	<td>//div[@id='texte']/p[6]</td>
-	<td>Date de fin : 2014-12-06</td>
+	<td>Date de fin : 2014-12-01</td>
 </tr>
 <tr>
 	<td>verifyText</td>
@@ -73,10 +73,29 @@
 </tr>
 <tr>
 	<td>verifyText</td>
-	<td>link=Titre US6</td>
-	<td>Titre US6</td>
+	<td>link=Télécharger le code</td>
+	<td>Télécharger le code</td>
 </tr>
-
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/div/section/div/table/tbody/tr/td[2]</td>
+	<td>Titre US3</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/div/section/div/table/tbody/tr[2]/td[2]</td>
+	<td>Titre US4</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//div[@id='texte']/div/div/section/div/table/tbody/tr[3]/td[2]</td>
+	<td>Titre US5</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=#texte &gt; div &gt; h3</td>
+	<td>Burn Down Chart</td>
+</tr>
 </tbody></table>
 </body>
 </html>

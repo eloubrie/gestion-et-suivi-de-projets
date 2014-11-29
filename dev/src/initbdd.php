@@ -3,7 +3,8 @@ include("bdd/bdd.php");
 
 if($_GET['tables']!=1)
 { 
-	BDD::getConnection()->query("DROP DATABASE cdp; CREATE DATABASE cdp;");
+	BDD::getConnection()->query("SET foreign_key_checks = 0; DROP TABLE `developpeurs`, `documentation`, `gantt`, `git`, `sprints`, `taches`, `us`;");
+	
 	header('Location: initbdd.php?tables=1');
 }
 else

@@ -55,6 +55,8 @@ class ControllerUs
 		{
 			$this->_buildBaclogLine($line);
 		}
+		                
+		$this->_updateSprints();
 	}
     
 	// Return true if parameter is a link
@@ -99,9 +101,6 @@ class ControllerUs
 			</td>
 		</tr>
 		<?php
-                
-		$this->_cleanSprintCost();
-		$this->_updateSprints();
 	}		
 	
 	// Print US informations
@@ -126,7 +125,6 @@ class ControllerUs
 		<p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
 		<?php
                 
-		$this->_cleanSprintCost();
 		$this->_updateSprints();
 	}
 	
@@ -145,15 +143,8 @@ class ControllerUs
 		$this->modelUs->_supprUs($ID);
 	}
     
-	protected function _cleanSprintCost(){
-		$backLog = $this->modelUs->_getBacklog();
-		foreach($backLog as $us){
-			$this->modelUs->_clearSprintCost[$us['ID_sprint']];
-		}
-	}
-    
 	// Re-calculate sprint costs
-	protected function _updateSprints(){
+	public function _updateSprints(){
 		$sprintList = $this->modelUs->_getSprintList();
 		foreach($sprintList as $sprint){
 			$cost = 0;

@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost/" />
-<title>git_us</title>
+<title>git_sprint</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">git_us</td></tr>
+<tr><td rowspan="1" colspan="3">git_sprint</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -19,6 +19,41 @@
 <tr>
 	<td>open</td>
 	<td>/gestion-et-suivi-de-projets/dev/src/index.php</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sprints</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[1]/td[9]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=linkgit</td>
+	<td>https://github.com/eloubrie/gestion-et-suivi-de-projets/archive/v2.0.zip</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=submit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>//div[@id='texte']/div/section/div/table/tbody/tr[1]/td[9]/a[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sprint 1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyElementPresent</td>
+	<td>link=Télécharger le code</td>
 	<td></td>
 </tr>
 <tr>
@@ -56,7 +91,6 @@
 	<td>link=Télécharger le code</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

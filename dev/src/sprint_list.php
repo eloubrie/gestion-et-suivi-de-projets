@@ -3,7 +3,11 @@ include("bdd/bdd.php");
 include("structure/top_page.php"); 
 
 include("controllers/sprint.php");
+include("controllers/us.php");
 $controllerSprint = new ControllerSprint(); 
+$controllerUs = new ControllerUs(); 
+
+$controllerUs->_updateSprints();
 ?>
 
 <a href="manage_sprint.php" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>  Créer un nouveau sprint</a>

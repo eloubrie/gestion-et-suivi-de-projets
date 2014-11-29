@@ -3,7 +3,7 @@ class ModelSprint
 {
 	public function _getSprintList()
 	{
-		return BDD::getConnection()->query('SELECT * FROM sprints');
+		return BDD::getConnection()->query('SELECT * FROM sprints ORDER BY numero_du_sprint ASC');
 	}
         
 	public function _getSprint($id)
