@@ -17,6 +17,7 @@ class ControllerTasc
 		return $this->modelTasc->_getTasc($id)->fetch(PDO::FETCH_ASSOC);
 	}
 	
+	// Convert parameter to tasc status
 	private function _TascStatus($s)
 	{
 		if($s == 0)
@@ -29,6 +30,7 @@ class ControllerTasc
 		return $status;
 	}
 	
+	// Convert parameter to tasc type
 	private function _tascType($t)
 	{
 		if($t==1)
@@ -50,6 +52,7 @@ class ControllerTasc
 		return $dev['pseudo'];
 	}
 	
+	// Build entire tasc table
 	public function _buildTascList()
 	{
 		foreach($this->modelTasc->_getAllTascs() as $tasc)
@@ -58,6 +61,7 @@ class ControllerTasc
 		}
 	}
 	
+	// Build tasc table for a US
 	public function _buildTascListFromUs($id)
 	{
 		foreach($this->modelTasc->_getTascsFromUs($id) as $tasc)
@@ -66,21 +70,22 @@ class ControllerTasc
 		}
 	}
 	
+	// Build a line of the tasc table
 	private function _buildTascListLine($line)
 	{
-                if(!empty($line['ID_US'])){
-                    $US = $line['ID_US'];
-                    $req = $this->modelTasc->_getSprintTasc($line['ID'])->fetch(PDO::FETCH_ASSOC);
-                    if(!empty($req['numero_du_sprint'])){
-                       $sprint = $req['numero_du_sprint'];
-                    }
-                     else {                    
-                         $sprint = NULL;
-                     }
-                }
-                else{
-                    $US = NULL;
-                }
+		if(!empty($line['ID_US'])){
+			$US = $line['ID_US'];
+			$req = $this->modelTasc->_getSprintTasc($line['ID'])->fetch(PDO::FETCH_ASSOC);
+			if(!empty($req['numero_du_sprint'])){
+			   $sprint = $req['numero_du_sprint'];
+			}
+			 else {                    
+				 $sprint = NULL;
+			 }
+		}
+		else{
+			$US = NULL;
+		}
                 
 		?>
 		<tr>
@@ -103,22 +108,24 @@ class ControllerTasc
 		<?php
 	}
 	
+	// Print a tasc informations
 	public function _buildTascInfo($id)
 	{
 		$tasc = $this->modelTasc->_getTasc($id)->fetch(PDO::FETCH_ASSOC);
 		if(!empty($tasc['ID_US'])){
-                    $US = $tasc['ID_US'];
-                    $req = $this->modelTasc->_getSprintTasc($tasc['ID'])->fetch(PDO::FETCH_ASSOC);
-                    if(!empty($req['numero_du_sprint'])){
-                       $sprint = $req['numero_du_sprint'];
-                    }
-                     else {                    
-                         $sprint = NULL;
-                     }
-                }
-                else{
-                    $US = NULL;
-                }
+			$US = $tasc['ID_US'];
+			$req = $this->modelTasc->_getSprintTasc($tasc['ID'])->fetch(PDO::FETCH_ASSOC);
+			if(!empty($req['numero_du_sprint'])){
+			   $sprint = $req['numero_du_sprint'];
+			}
+			 else {                    
+				 $sprint = NULL;
+			 }
+		}
+		else{
+			$US = NULL;
+		}
+		
 		?>
 		<h3><?php echo $tasc['titre']; ?> (tâche numéro <?php echo $tasc['ID']; ?>)</h3><br />
 		<p><b>Description :</b> <?php echo $tasc['description']; ?></p>
@@ -136,17 +143,17 @@ class ControllerTasc
 	}
         
         
-        public function _insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
+	public function _insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
 	{
 		$this->modelTasc->_insertTasc($associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate);
 	}
         
-        public function _modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
+	public function _modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate)
 	{
 		$this->modelTasc->_modifTasc($ID, $associatedUS, $title, $tascDescription, $tascType, $cost, $otherTascsDependencies, $developer, $status, $realisationDate, $testDate);
 	}
         
-        public function _supprTasc($ID)
+	public function _supprTasc($ID)
 	{
 		$this->modelTasc->_supprTasc($ID);
 	}

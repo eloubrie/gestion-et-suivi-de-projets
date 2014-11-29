@@ -10,6 +10,7 @@ class ControllerUs
 		$this->modelUs = new ModelUs();
 	}
 	
+	// Convert parameter to tasc status
 	private function _UsStatus($s)
 	{
 		if($s == 0)
@@ -24,7 +25,7 @@ class ControllerUs
 	
 	public function _getBacklog()
 	{
-			return $this->modelUs->_getBacklog();
+		return $this->modelUs->_getBacklog();
 	}
 		
 	public function _getUs($id)
@@ -32,13 +33,14 @@ class ControllerUs
 		return $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
 	}
         
-        public function _getGitLink($id)
-        {
-                $us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
-                return $us['lien_git'];
-        }
-        
-        public function _buildUSListFromSprint($id)
+	public function _getGitLink($id)
+	{
+			$us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
+			return $us['lien_git'];
+	}
+   
+	// Generate US list for a Sprint
+	public function _buildUSListFromSprint($id)
 	{
 		foreach($this->modelUs->_getUsFromSprint($id) as $us)
 		{
@@ -46,6 +48,7 @@ class ControllerUs
 		}
 	}
         
+	// Generate the backlog
 	public function _buildBacklog()
 	{
 		foreach($this->modelUs->_getBacklog() as $line)
@@ -53,29 +56,31 @@ class ControllerUs
 			$this->_buildBaclogLine($line);
 		}
 	}
-        
-        public function _isGitLink($gitLink)
-        {
-            $gitLingRegex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-            if (preg_match($gitLingRegex, $gitLink))
-            {
-                return TRUE;
-            }
-            else
-            {
-                return FALSE;
-            }
-        }
+    
+	// Return true if parameter is a link
+	public function _isGitLink($gitLink)
+	{
+		$gitLingRegex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+		if (preg_match($gitLingRegex, $gitLink))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
 	
+	// Generate a backlok line
 	private function _buildBaclogLine($line)
 	{
-                if(!empty($line['ID_sprint'])){
-                    $req = $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
-                    $numSprint = $req['numero_du_sprint'];
-                }
-                else{
-                    $numSprint = NULL;
-                }
+		if(!empty($line['ID_sprint'])){
+			$req = $this->modelUs->_getSprintNumberByID($line['ID_sprint'])->fetch(PDO::FETCH_ASSOC);
+			$numSprint = $req['numero_du_sprint'];
+		}
+		else{
+			$numSprint = NULL;
+		}
 		?>
 		<tr>
 			<td><?php echo $line['ID']; ?></td>
@@ -95,10 +100,11 @@ class ControllerUs
 		</tr>
 		<?php
                 
-                $this->_cleanSprintCost();
-                $this->_updateSprints();
+		$this->_cleanSprintCost();
+		$this->_updateSprints();
 	}		
 	
+	// Print US informations
 	public function _buildUsInfo($id)
 	{
 		$us = $this->modelUs->_getUs($id)->fetch(PDO::FETCH_ASSOC);
@@ -120,8 +126,8 @@ class ControllerUs
 		<p><b>Date du dernier test :</b> <?php echo $us['date_test']; ?></p>
 		<?php
                 
-                $this->_cleanSprintCost();
-                $this->_updateSprints();
+		$this->_cleanSprintCost();
+		$this->_updateSprints();
 	}
 	
 	public function _insertUs($title, $description, $sprint, $cout, $datebegin, $dateend, $statut, $descriptiontest, $codetest)
@@ -138,30 +144,31 @@ class ControllerUs
 	{
 		$this->modelUs->_supprUs($ID);
 	}
-        
-        protected function _cleanSprintCost(){
-            $backLog = $this->modelUs->_getBacklog();
-            foreach($backLog as $us){
-                $this->modelUs->_clearSprintCost[$us['ID_sprint']];
-            }
-        }
-        
-        protected function _updateSprints(){
-            $sprintList = $this->modelUs->_getSprintList();
-            foreach($sprintList as $sprint){
-                $cost = 0;
-                $validate = 0;
-                $backLog = $this->modelUs->_getBacklog();
-                foreach($backLog as $us){
-                    if($us['ID_sprint'] == $sprint['ID']){
-                        $cost+=$us['cout'];
-                        if($us['statut'] >= 2){
-                            $validate+=$us['cout'];
-                        }
-                    }
-                }
-                $this->modelUs->_updateSprintTotalCost($sprint['ID'], $cost);
-                $this->modelUs->_updateSprintValidateCost($sprint['ID'], $validate);
-            }
-        }
+    
+	protected function _cleanSprintCost(){
+		$backLog = $this->modelUs->_getBacklog();
+		foreach($backLog as $us){
+			$this->modelUs->_clearSprintCost[$us['ID_sprint']];
+		}
+	}
+    
+	// Re-calculate sprint costs
+	protected function _updateSprints(){
+		$sprintList = $this->modelUs->_getSprintList();
+		foreach($sprintList as $sprint){
+			$cost = 0;
+			$validate = 0;
+			$backLog = $this->modelUs->_getBacklog();
+			foreach($backLog as $us){
+				if($us['ID_sprint'] == $sprint['ID']){
+					$cost+=$us['cout'];
+					if($us['statut'] >= 2){
+						$validate+=$us['cout'];
+					}
+				}
+			}
+			$this->modelUs->_updateSprintTotalCost($sprint['ID'], $cost);
+			$this->modelUs->_updateSprintValidateCost($sprint['ID'], $validate);
+		}
+	}
 }

@@ -15,39 +15,41 @@ class ControllerSprint
 		return $this->modelSprint->_getSprintList();
 	}
         
-        public function _getSprint($id)
+    public function _getSprint($id)
 	{
 		return $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
 	}
         
-        public function _getGitLink($id)
-        {
-                $sprint = $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
-                return $sprint['lien_git'];
-        }
+	public function _getGitLink($id)
+	{
+			$sprint = $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
+			return $sprint['lien_git'];
+	}
         
-        public function _buildSprintList()
+	public function _buildSprintList()
 	{
 		foreach($this->modelSprint->_getSprintList() as $sprint)
 		{
 			$this->_buildSprintListLine($sprint);
 		}
 	}
-        
-        public function _isGitLink($gitLink)
-        {
-            $gitLingRegex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-            if (preg_match($gitLingRegex, $gitLink))
-            {
-                return TRUE;
-            }
-            else
-            {
-                return FALSE;
-            }
-        }
-        
-        private function _buildSprintListLine($line)
+    
+	// Return true if the parameter is a link
+	public function _isGitLink($gitLink)
+	{
+		$gitLingRegex = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+		if (preg_match($gitLingRegex, $gitLink))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+    
+	// Build a line in sprint list
+	private function _buildSprintListLine($line)
 	{
 		?>
 		<tr>
@@ -62,14 +64,15 @@ class ControllerSprint
 			<td>
 				<a href="manage_sprint.php?modif_sprint=<?php echo $line['ID']; ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span></a>
 				<a href="manage_sprint.php?action=suppr&sprint_suppr=<?php echo $line['ID']; ?>" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
-                                <?php if ($this->_isGitLink($line['lien_git']))
-                                {?> <a href="<?php echo $line['lien_git']; ?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-download-alt"></span></a> <?php } ?>
+				<?php if ($this->_isGitLink($line['lien_git']))
+				{?> <a href="<?php echo $line['lien_git']; ?>" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-download-alt"></span></a> <?php } ?>
 			</td>
 		</tr>
 		<?php
 	}
-        
-        public function _buildSprintInfo($id)
+	
+	// Print sprint informations
+	public function _buildSprintInfo($id)
 	{
 		$sprint = $this->modelSprint->_getSprint($id)->fetch(PDO::FETCH_ASSOC);
 		
@@ -85,17 +88,17 @@ class ControllerSprint
 		<?php
 	}
         
-        public function _insertSprint($number, $cost, $startDate, $duration, $endDate, $title, $description)
+	public function _insertSprint($number, $cost, $startDate, $duration, $endDate, $title, $description)
 	{
 		$this->modelSprint->_insertSprint($number, $cost, $startDate, $duration, $endDate, $title, $description);
 	}
         
-        public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost, $gitLink)
+	public function _modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost, $gitLink)
 	{
 		$this->modelSprint->_modifSprint($ID, $number, $cost, $creationDate, $startDate, $duration, $endDate, $title, $description, $validatedCost, $gitLink);
 	}
         
-        public function _supprSprint($ID)
+	public function _supprSprint($ID)
 	{
 		$this->modelSprint->_supprSprint($ID);
 	}

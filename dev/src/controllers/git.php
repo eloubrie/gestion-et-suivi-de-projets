@@ -9,7 +9,7 @@ class ControllerGit
 	{
             $this->modelGit = new ModelGit();
 	}
-        
+	
 	public function _printGitLink(){
 		$req = $this->modelGit->_getGitURL();
 		$data = $req->fetch();

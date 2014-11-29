@@ -14,18 +14,21 @@ class ControllerResults
 		$this->modelUs = new ModelUS();
     }
 	
+	// Draw BDC for entire project
 	public function _drawGlobalBDC()
 	{
 		$values = $this->_getValuesGlobalBDC();
 		$this->_buildBDCAll($values[0], $values[1], $values[2]);
 	}
 	
+	// Draw BDC for a sprint
 	public function _drawASprintBDC($sprintID)
 	{
 		$values = $this->_getValuesSprintBDC($sprintID);
 		$this->_buildBDCSprint("Sprint ".$sprintID, $values[0], $values[1], $values[2]);
 	}
 	
+	// Draw BDC for a sprint from arrays
 	protected function _buildBDCSprint($sprintName, $arrayDays, $arrayExpected, $arrayRealize){
 		$BDC_all = new PHPlot(950,500);              
 		$BDC_all->SetTitle("Burn Down Chart : ".$sprintName);
@@ -33,8 +36,9 @@ class ControllerResults
 		$BDC_all->SetYTitle('Points restants');
 		$this->_drawShape($BDC_all, $arrayDays, $arrayExpected, $arrayRealize);
 		
-	}       
+	}  
 	
+	// Draw BDC for entire project from arrays
 	protected function _buildBDCAll($arraySprint, $arrayExpected, $arrayRealize){
 		$BDC_all = new PHPlot(800,600);              
 		$BDC_all->SetTitle("Burn Down Chart");
@@ -43,6 +47,7 @@ class ControllerResults
 		$this->_drawShape($BDC_all, $arraySprint, $arrayExpected, $arrayRealize);
 	}
 
+	// Draw BDC lines
 	protected function _drawShape($plot, $xData, $yData1, $yData2){
 		$arrayPlot = new ArrayObject();
 		for($i=0;$i<$xData->count();$i+=1)
@@ -55,6 +60,7 @@ class ControllerResults
 		$plot->DrawGraph();
 	}
 	
+	// Calculate values to draw in sprint BDC
 	protected function _getValuesSprintBDC($id_sprint)
 	{
 		$sprint = $this->modelSprint->_getSprint($id_sprint)->fetch(PDO::FETCH_ASSOC);
@@ -82,6 +88,7 @@ class ControllerResults
 		return $globalArray;
 	}
 	
+	// Calculate values to draw in entire project BDC
 	protected function _getValuesGlobalBDC()
 	{
 		$globalArray = new ArrayObject();

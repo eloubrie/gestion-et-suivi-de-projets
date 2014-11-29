@@ -1,23 +1,9 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of gantt
- *
- * @author dechu
- */
-
 include ("models/sprint.php");
 include ("models/developer.php");
 include ("models/tasc.php");
 
 class ModelGantt {
-    //put your code here
     
     // Foreign keys in gantt table
     private $developer;
