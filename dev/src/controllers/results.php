@@ -31,7 +31,7 @@ class ControllerResults
 	// Draw BDC for a sprint from arrays
 	protected function _buildBDCSprint($sprintName, $arrayDays, $arrayExpected, $arrayRealize){
 		$BDC_all = new PHPlot(950,500);              
-		$BDC_all->SetTitle("Burn Down Chart : ".$sprintName);
+		$BDC_all->SetTitle("Burn Down Chart");
 		$BDC_all->SetXTitle('Jours');
 		$BDC_all->SetYTitle('Points restants');
 		$this->_drawShape($BDC_all, $arrayDays, $arrayExpected, $arrayRealize);
